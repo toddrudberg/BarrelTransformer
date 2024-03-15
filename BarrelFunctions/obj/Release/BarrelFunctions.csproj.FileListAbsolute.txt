@@ -1,0 +1,46 @@
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Release\IMachine.cs
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Release\BarrelFunctions.dll
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Release\BarrelFunctions.pdb
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Release\LinearAlgebra.dll
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Release\OpenCNCDll.dll
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Release\ClassStringCalc.dll
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Release\LinearAlgebra.pdb
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelFunctions\obj\Release\ResolveAssemblyReference.cache
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelFunctions\obj\Release\BarrelFunctions.dll
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelFunctions\obj\Release\BarrelFunctions.pdb
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Release\IMachine.cs
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Release\BarrelFunctions.dll
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Release\BarrelFunctions.pdb
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Release\LinearAlgebra.dll
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Release\OpenCNCDll.dll
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Release\ClassStringCalc.dll
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Release\LinearAlgebra.pdb
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelFunctions\obj\Release\ResolveAssemblyReference.cache
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelFunctions\obj\Release\BarrelFunctions.dll
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelFunctions\obj\Release\BarrelFunctions.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Release\BarrelFunctions.XML
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Release\BarrelFunctions.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Release\BarrelFunctions.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Release\LinearAlgebra.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Release\ClassStringCalc.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\obj\Release\BarrelFunctions.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\obj\Release\BarrelFunctions.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\obj\Release\BarrelFunctions.csprojResolveAssemblyReference.cache
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelFunctions\obj\Release\BarrelFunctions.csprojResolveAssemblyReference.cache
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelFunctions\bin\Release\IMachine.cs
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelFunctions\bin\Release\BarrelFunctions.XML
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelFunctions\bin\Release\BarrelFunctions.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelFunctions\bin\Release\BarrelFunctions.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelFunctions\bin\Release\LinearAlgebra.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelFunctions\bin\Release\ClassStringCalc.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelFunctions\bin\Release\OpenCNCDll.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelFunctions\bin\Release\LinearAlgebra.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelFunctions\bin\Release\ClassStringCalc.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelFunctions\bin\Release\ClassStringCalc.xml
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelFunctions\obj\Release\BarrelFunctions.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelFunctions\obj\Release\BarrelFunctions.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Release\OpenCNCDll.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Release\LinearAlgebra.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Release\LinearAlgebra.xml
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Release\ClassStringCalc.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Release\ClassStringCalc.xml

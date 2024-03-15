@@ -1,0 +1,1885 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Serialization;
+//using SolverPlatform;
+using Electroimpact;
+using System.IO;
+using Electroimpact.LinearAlgebra;
+
+//==============================
+//Copyright (c) 2004-2013, Regents of the University of California
+//All rights reserved.
+
+//Redistribution and use in source and binary forms, with or without modification,
+// are permitted provided that the following conditions are met:
+
+//    * Redistributions of source code must retain the above copyright notice,
+//       this list of conditions and the following disclaimer.
+//    * Redistributions in binary form must reproduce the above copyright
+//      notice, this list of conditions and the following disclaimer in the
+//      documentation and/or other materials provided with the distribution.
+//    * Neither the name of the University of California, Berkeley
+//nor the names of its contributors may be used to endorse or promote
+//products derived from this software without specific prior written permission.
+
+//THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+//"AS IS" AND Ay_nom EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+//LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+//FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+//COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR Ay_nom DIRECT, INDIRECT,
+//INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+//BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+//LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+//CAUSED AND ON Ay_nom THEORY OF LIABILITY, WHETHER IN CONTRACT,
+//STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+//ARISING IN Ay_nom WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+//OF THE POSSIBILITY OF SUCH DAMAGE.
+//====================================
+
+namespace Transformer
+{
+
+
+  public partial class frmBarrelTransformer : Form
+  {
+    #region members
+    const int AnlgePower = 6;
+    const int OffsetPower = 3;
+    const int MatrixPower = 6;
+    double AnglePrecision = 1.0 * Math.Pow(10,(double)AnlgePower);
+    double OffsetPrecision = 1.0 * Math.Pow(10, (double)OffsetPower);
+    double MatrixPrecision = 1.0 * Math.Pow(10, (double)MatrixPower);
+    Electroimpact.cBarrelFunctions myBarrelFunction;
+    System.Collections.Generic.List<Electroimpact.cPoint> myPoints = new List<cPoint>();
+    cFormState formstate;
+    #endregion
+
+    #region FormState
+    [Serializable]
+    [XmlRoot("XML")]
+    public class cFormState
+    {
+
+      // TO DO
+      // Set SaveLoc
+      // in the constructor of parent class call cFormState.OpenMe
+      // in the parent class, implement LocationChanged and copy the location into fsp
+      // anytime you make a change you want to save, call cFormState.Save();
+
+      #region Members
+      public string mLastOpenedInput = "";
+      public string cnc_ip = "192.168.100.10";
+      public bool uses_uv_table_transform = false;
+      public Point fsp = new Point();
+      public cBarrelFunctions.cSetupBarrelTransformer LastTransformState = new cBarrelFunctions.cSetupBarrelTransformer();
+      public bool uses_uofx_function = true;
+      public bool uses_barrel_transform = false;
+      public bool uses_mm_data = false;
+      #endregion
+
+      #region Constructor
+      public cFormState()
+      {
+
+      }
+
+      #endregion
+
+      #region basic functions
+
+      public static string SaveLoc()
+      {
+        return MikesXmlSerializer.generateDefaultFilename("Electroimpact", "BarrelTransformer");
+      }
+
+      public static void Save(cFormState fs)
+      {
+        MikesXmlSerializer.Save(fs, SaveLoc());
+      }
+
+      public static void OpenMe(ref cFormState fs)
+      {
+        if( System.IO.File.Exists( cFormState.SaveLoc()))
+        {
+          fs = MikesXmlSerializer.Load<cFormState>(SaveLoc());
+        }
+        else
+        {
+          fs = new cFormState();
+          cFormState.Save(fs);
+        }
+      }
+
+      public void SaveMe()
+      {
+        Save(this);
+      }
+
+      public void MoveToStartPos(System.Windows.Forms.Form doggy)
+      {
+        try
+        {
+          doggy.Location = IsBizarreLocation(this.fsp, doggy.Size) ? doggy.Location : this.fsp;
+        }
+        catch (Exception ex)
+        {
+          MessageBox.Show(ex.Message);
+        }
+      }
+
+      private bool IsBizarreLocation(Point loc, Size size)
+      {
+        bool locOkay;
+
+        if (!CheckIfInaScreen(loc, size))
+          locOkay = false;
+        else
+        {
+          locOkay = true;
+        }
+        return !locOkay;
+      }
+
+      private bool CheckIfInaScreen(Point loc, Size size)
+      {
+        bool[] HorizontalOK = new bool[Screen.AllScreens.Length];
+        bool[] VerticalOK = new bool[Screen.AllScreens.Length];
+        for (int ii = 0; ii < Screen.AllScreens.Length; ii++)
+        {
+          if ((loc.X > Screen.AllScreens[ii].Bounds.Left) && ((loc.X + size.Width) < Screen.AllScreens[ii].Bounds.Right))
+            HorizontalOK[ii] = true;
+          if ((loc.Y > Screen.AllScreens[ii].Bounds.Top) && ((loc.Y + size.Height) < Screen.AllScreens[ii].Bounds.Bottom))
+            VerticalOK[ii] = true;
+        }
+        bool OK = false;
+        for (int ii = 0; ii < Screen.AllScreens.Length; ii++)
+        {
+          if (HorizontalOK[ii] && VerticalOK[ii])
+            OK = true;
+        }
+        return OK;
+      }
+      #endregion
+
+      public bool trySetCNC_IP(string cnc_ip_in)
+      {
+        System.Net.IPAddress ip;
+        if (System.Net.IPAddress.TryParse(cnc_ip_in, out ip))
+        {
+          cnc_ip = cnc_ip_in;
+          SaveMe();
+          return true;
+        }
+        MessageBox.Show(cnc_ip_in + " invalid ip address format.");
+        return false;
+      }
+    }
+    #endregion
+
+    #region Constructor ETC
+    public frmBarrelTransformer()
+    {
+      InitializeComponent();
+      myBarrelFunction = new cBarrelFunctions();
+
+    }
+
+    private void frmBarrelTransformer_Load(object sender, EventArgs e)
+    {
+      this.Size = new Size(453, 893);
+      formstate = new cFormState();
+      cFormState.OpenMe(ref formstate);
+      formstate.MoveToStartPos(this);
+      myBarrelFunction = new cBarrelFunctions(formstate.LastTransformState);
+      menustrip_Barrel_Transform.Checked = formstate.uses_barrel_transform;
+      menustrip_v_argument_option.Checked = formstate.uses_uv_table_transform;
+      menustrip_useXuFunction_Ax.Checked = formstate.uses_uofx_function;
+      menustrip_mm_data.Checked = formstate.uses_mm_data;
+      update_optionlist();
+      txtbox_transform_args_update();
+    }
+    #endregion
+
+    #region stuff related to trasnforming
+
+    public void Transform(double[,] points)
+    {
+      InitializeComponent();
+      myBarrelFunction = new cBarrelFunctions();
+
+      int nRows = points.GetLength(0);
+      int nCols = points.GetLength(1);
+
+
+      //this has a chance of actually working
+      if (nCols == 7)
+      {
+        string spoints = "";
+        for (int row = 0; row < nRows; row++)
+        {
+          string sline = "";
+          for (int col = 0; col < 6; col++)
+          {
+            sline += points[row, col].ToString() + "\t";
+          }
+          sline += points[row, 6].ToString() + "\n";
+          spoints += sline;
+        }
+        System.Windows.Forms.Clipboard.SetText(spoints);
+        //btnPasteInPointsToTransform_Click(this, null);
+      }
+    }
+
+    //Transform
+    bool b_FirstTimeThru = true;
+    public void btnTransform_Click(object sender, EventArgs e)
+    {
+      this.Enabled = false;
+      try
+      {
+
+        txtEulerCheck.Clear();
+        this.Refresh();
+        System.Threading.Thread.Sleep(50);
+
+        if (b_FirstTimeThru)
+        {
+          myPoints.Clear();
+          ReadInPoints("points.csv");
+        }
+        b_FirstTimeThru = false;
+
+
+        myBarrelFunction.ClearTransform();
+
+        SolveMeII();
+
+        formstate.LastTransformState.setArgs(myBarrelFunction);
+        formstate.SaveMe();
+
+        txtbox_transform_args_update();
+
+        #region Output The Results
+
+        Electroimpact.FileIO.cFileWriter fw = new Electroimpact.FileIO.cFileWriter();
+
+        if (!Electroimpact.FileIO.cFileOther.FileExistsMethod("Transforms.csv"))
+        {
+          fw.WriteLine("Transforms.csv", "MtoS.X,MtoS.Y,MtoS.Z,MtoS.rX,MtoS.rY,MtoS.rZ,A_x,StoFRC.X,StoFRC.Y,StoFRC.Z,StoFRC.rX,StoFRC.rY,StoFRC.rZ", true);
+        }
+        fw.WriteLine("Transforms.csv",
+                                      myBarrelFunction.PartToUaxis.X.ToString("F3") + "," +
+                                      myBarrelFunction.PartToUaxis.Y.ToString("F3") + "," +
+                                      myBarrelFunction.PartToUaxis.Z.ToString("F3") + "," +
+                                      (myBarrelFunction.PartToUaxis.rX.RadiansToDegrees()).ToString("F6") + "," +
+                                      (myBarrelFunction.PartToUaxis.rY.RadiansToDegrees()).ToString("F6") + "," +
+                                      (myBarrelFunction.PartToUaxis.rZ.RadiansToDegrees()).ToString("F6") + "," +
+                                      myBarrelFunction.A_x.ToString("F6") + "," +
+                                      myBarrelFunction.VaxisToFRC.X.ToString("F3") + "," +
+                                      myBarrelFunction.VaxisToFRC.Y.ToString("F3") + "," +
+                                      myBarrelFunction.VaxisToFRC.Z.ToString("F3") + "," +
+                                      (myBarrelFunction.VaxisToFRC.rX.RadiansToDegrees()).ToString("F6") + "," +
+                                      (myBarrelFunction.VaxisToFRC.rY.RadiansToDegrees()).ToString("F6") + "," +
+                                      (myBarrelFunction.VaxisToFRC.rZ.RadiansToDegrees()).ToString("F6") + ","
+                                      , true);
+        #endregion
+
+        btnCheckEuler_Click(sender, e);
+      }
+      catch
+      {
+      }
+      this.Enabled = true;
+    }
+
+    private void txtbox_transform_args_update()
+    {
+      string[] lines = new string[13];
+      lines[0] = myBarrelFunction.PartToUaxis.X.ToString("F6").PadLeft(14);
+      lines[1] = myBarrelFunction.PartToUaxis.Y.ToString("F6").PadLeft(14);
+      lines[2] = myBarrelFunction.PartToUaxis.Z.ToString("F6").PadLeft(14);
+      lines[3] = (myBarrelFunction.PartToUaxis.rX.RadiansToDegrees()).ToString("F6").PadLeft(14);
+      lines[4] = (myBarrelFunction.PartToUaxis.rY.RadiansToDegrees()).ToString("F6").PadLeft(14);
+      lines[5] = (myBarrelFunction.PartToUaxis.rZ.RadiansToDegrees()).ToString("F6").PadLeft(14);
+      lines[6] = "A_x: " + myBarrelFunction.A_x.ToString("F6").PadLeft(14);
+      lines[7] = myBarrelFunction.VaxisToFRC.X.ToString("F6").PadLeft(14);
+      lines[8] = myBarrelFunction.VaxisToFRC.Y.ToString("F6").PadLeft(14);
+      lines[9] = myBarrelFunction.VaxisToFRC.Z.ToString("F6").PadLeft(14);
+      lines[10] = (myBarrelFunction.VaxisToFRC.rX.RadiansToDegrees()).ToString("F6").PadLeft(14);
+      lines[11] = (myBarrelFunction.VaxisToFRC.rY.RadiansToDegrees()).ToString("F6").PadLeft(14);
+      lines[12] = (myBarrelFunction.VaxisToFRC.rZ.RadiansToDegrees()).ToString("F6").PadLeft(14);
+      txtbox_transform_args.Lines = lines;
+    }
+
+    private void ReadInPoints(string FileName)
+    {
+      Electroimpact.FileIO.cFileReader fr = new Electroimpact.FileIO.cFileReader();
+      fr.OpenFile(FileName);
+      fr.ReadLine();//throw out the first line.
+      while (fr.Peek())
+      {
+        string line = fr.ReadLine();
+        if(formstate.uses_barrel_transform)
+          myPoints.Add(new cPoint(line, formstate.uses_uv_table_transform));
+        else
+          myPoints.Add(new cPoint(line));
+      }
+      fr.CloseFile();
+    }
+
+    private void SolveMeII()
+    {
+
+      int maxIterations = 10000;
+      double tol = 0.000001;//error is the average of the radial error squared: 0.001" * 0.001" = 0.000001"
+
+
+      //initial min/max are not hard limits, but are just used to create initial guesses
+      double[] xMin = { -90, -90, -90, -10, -1000, -1000, -1000, -90, -90, -90, -1000, -1000, -1000 };
+      //double[] xMin = { -90, -90, -90, -1000, -1000, -1000, -90, -90, -90, -1000, -1000, -1000 };
+      double[] xMax = { 90, 90, 90, 10,1000, 1000, 1000, 90, 90, 90, 1000, 1000, 1000 };
+
+      //create object to solve
+      NelderMeade.BTformer myTform = new NelderMeade.BTformer(tol, this);
+      //assign object to the simplex search
+      NelderMeade.SimplexSearch mySimplex = new NelderMeade.SimplexSearch(myTform, maxIterations);
+      //execute the optimization search
+      Boolean success = mySimplex.minimize(xMin, xMax);
+
+      int indexBest = mySimplex.getBest();
+      double[] BestPars = mySimplex.getSimplex(indexBest);
+
+      //final update to put the best values in barrel transformer
+      CalculateError(BestPars);
+
+    }
+
+
+
+    public double CalculateError(double [] Vars)
+    {
+
+        //case 9:
+      myBarrelFunction.VaxisToFRC.X = myBarrelFunction.VaxisToFRC.Y = myBarrelFunction.VaxisToFRC.Z = 0;
+      myBarrelFunction.VaxisToFRC.rX = Vars[0].DegreesToRadians();
+      myBarrelFunction.VaxisToFRC.rY = Vars[1].DegreesToRadians();
+      myBarrelFunction.VaxisToFRC.rZ = Vars[2].DegreesToRadians();
+
+      if (menustrip_Barrel_Transform.Checked)
+      {
+        if (formstate.uses_uofx_function)
+          myBarrelFunction.A_x = Vars[3];
+        else
+          myBarrelFunction.A_x = 0.0;
+
+        myBarrelFunction.PartToUaxis.X = Vars[4];
+        myBarrelFunction.PartToUaxis.Y = Vars[5];
+        myBarrelFunction.PartToUaxis.Z = Vars[6];
+        myBarrelFunction.PartToUaxis.rX = Vars[7].DegreesToRadians();
+        myBarrelFunction.PartToUaxis.rY = Vars[8].DegreesToRadians();
+        myBarrelFunction.PartToUaxis.rZ = Vars[9].DegreesToRadians();
+        if (chkStupid.Checked)
+        {
+          myBarrelFunction.A_x = 0;
+          myBarrelFunction.PartToUaxis.X = 0;
+          myBarrelFunction.PartToUaxis.Y = 0;
+          myBarrelFunction.PartToUaxis.Z = 0;
+          myBarrelFunction.PartToUaxis.rX = 0;
+          myBarrelFunction.PartToUaxis.rY = 0;
+          myBarrelFunction.PartToUaxis.rZ = 0;
+        }
+      }
+      else
+      {
+        myBarrelFunction.A_x = 0;
+        myBarrelFunction.PartToUaxis.X = 0;
+        myBarrelFunction.PartToUaxis.Y = 0;
+        myBarrelFunction.PartToUaxis.Z = 0;
+        myBarrelFunction.PartToUaxis.rX = 0;
+        myBarrelFunction.PartToUaxis.rY = 0;
+        myBarrelFunction.PartToUaxis.rZ = 0;
+      }
+
+
+      double error = 0.0;
+      double Txerr = 0;
+      double Tyerr = 0;
+      double Tzerr = 0;
+      int number_of_points_to_solve = 0;
+      for (int ii = 0; ii < myPoints.Count; ii++)
+      {
+        double[] ret = myBarrelFunction.BarrelToFRC(myPoints[ii]);
+        double xerr = (ret[0] - myPoints[ii].x_meas);
+        double yerr = (ret[1] - myPoints[ii].y_meas);
+        double zerr = (ret[2] - myPoints[ii].z_meas);
+
+        if (myPoints[ii].bUseInXform)
+          number_of_points_to_solve++;
+        else
+          continue;
+
+        Txerr += xerr;
+        Tyerr += yerr;
+        Tzerr += zerr;
+
+        error += (xerr * xerr + yerr * yerr + zerr * zerr);
+      }
+      //if (Count == 9)
+      //{
+        Txerr /= (double)number_of_points_to_solve;
+        Tyerr /= (double)number_of_points_to_solve;
+        Tzerr /= (double)number_of_points_to_solve;
+        myBarrelFunction.VaxisToFRC.X = -Txerr;
+        myBarrelFunction.VaxisToFRC.Y = -Tyerr;
+        myBarrelFunction.VaxisToFRC.Z = -Tzerr;
+        error = 0.0;
+        for (int ii = 0; ii < myPoints.Count; ii++)
+        {
+          if (!myPoints[ii].bUseInXform)
+            continue;
+
+          double[] ret = myBarrelFunction.BarrelToFRC(myPoints[ii]);
+          double xerr = (ret[0] - myPoints[ii].x_meas);
+          double yerr = (ret[1] - myPoints[ii].y_meas);
+          double zerr = (ret[2] - myPoints[ii].z_meas);
+          error += (xerr * xerr + yerr * yerr + zerr * zerr);
+        }
+      //}
+
+        //return error modulated by number of points 
+        //this is NOT the average error, it is the average of the squares
+        //the radial error is 
+        error /= (double)number_of_points_to_solve;
+
+      return error;
+    }
+
+    #endregion
+
+    #region Button Clicks etc
+
+    //check Euler Angle
+    private void btnCheckEuler_Click(object sender, EventArgs e)
+    {
+      checked_points_list.Items.Clear();
+
+      lblPointsInXform.Text = "Points in Transform.  Units are " + (formstate.uses_mm_data ? "mm." : "inch.");
+
+      double d2r = Math.PI / 180.0;
+      System.Collections.Generic.List<string> outputString = new List<string>();
+      Console.WriteLine("Converting Tool Positions to MRS: ");
+
+      Electroimpact.LinearAlgebra.c6dof PartToUaxisInverse = new Electroimpact.LinearAlgebra.c6dof(myBarrelFunction.PartToUaxis.Inverse());
+      Electroimpact.LinearAlgebra.c6dof VaxisToFRCInverse = new Electroimpact.LinearAlgebra.c6dof(myBarrelFunction.VaxisToFRC.Inverse());
+      Electroimpact.LinearAlgebra.RxMatrix u = new Electroimpact.LinearAlgebra.RxMatrix();
+      double ErrorEuler = 0;
+      double MaxRadial = 0;
+      double TotalRadial = 0;
+
+
+
+      int total_points_in_transform = 0;
+      
+      for (int ii = 0; ii < myPoints.Count; ii++)
+      {
+        double[] point = new double[4];
+        double[] PointOutput;
+
+        double xerr;
+        double yerr;
+        double zerr;
+
+        PointOutput = myBarrelFunction.BarrelToFRC(myPoints[ii]);
+
+        xerr = PointOutput[0] - myPoints[ii].x_meas;
+        yerr = PointOutput[1] - myPoints[ii].y_meas;
+        zerr = PointOutput[2] - myPoints[ii].z_meas;
+        ErrorEuler += (xerr * xerr + yerr * yerr + zerr * zerr);
+
+
+        if (myPoints[ii].bUseInXform)
+        {
+          MaxRadial = Math.Sqrt((xerr * xerr + yerr * yerr + zerr * zerr)) > MaxRadial ? Math.Sqrt((xerr * xerr + yerr * yerr + zerr * zerr)) : MaxRadial;
+          TotalRadial += Math.Sqrt((xerr * xerr + yerr * yerr + zerr * zerr));
+          total_points_in_transform++;
+        }
+
+        myPoints[ii].errInXform = Math.Sqrt(xerr * xerr + yerr * yerr + zerr * zerr);
+        myPoints[ii].point_number = ii + 1;
+        checked_points_list.Items.Add(myPoints[ii], myPoints[ii].bUseInXform);
+
+        outputString.Add("Data for Point: " + (ii + 1).ToString());
+        if (myPoints[ii].bUseInXform)
+          outputString.Add("This point is used in the transform");
+        else
+          outputString.Add("This point is NOT used in the transform");
+
+        outputString.Add("Regular 6DOF method: ");
+        outputString.Add("X nominal:" + myPoints[ii].x_nom.ToString("F3").PadLeft(9) + " -->" + PointOutput[0].ToString("F3").PadLeft(9) + " Measured: " + myPoints[ii].x_meas.ToString("F3").PadLeft(9) + " error: " + xerr.ToString("F3").PadLeft(6));
+        outputString.Add("Y nominal:" + myPoints[ii].y_nom.ToString("F3").PadLeft(9) + " -->" + PointOutput[1].ToString("F3").PadLeft(9) + " Measured: " + myPoints[ii].y_meas.ToString("F3").PadLeft(9) + " error: " + yerr.ToString("F3").PadLeft(6));
+        outputString.Add("Z nominal:" + myPoints[ii].z_nom.ToString("F3").PadLeft(9) + " -->" + PointOutput[2].ToString("F3").PadLeft(9) + " Measured: " + myPoints[ii].z_meas.ToString("F3").PadLeft(9) + " error: " + zerr.ToString("F3").PadLeft(6));
+
+        cPoint p = new cPoint(0, 0, 0, PointOutput[0], PointOutput[1], PointOutput[2], myPoints[ii].upos, myPoints[ii].vpos);
+        double[] BackToFwd = myBarrelFunction.FRCtoBarrel(p);
+
+        outputString.Add(PointOutput[0].ToString("F3").PadLeft(9) + " --> " + BackToFwd[0].ToString("F3").PadLeft(9));
+        outputString.Add(PointOutput[1].ToString("F3").PadLeft(9) + " --> " + BackToFwd[1].ToString("F3").PadLeft(9));
+        outputString.Add(PointOutput[2].ToString("F3").PadLeft(9) + " --> " + BackToFwd[2].ToString("F3").PadLeft(9));
+
+        outputString.Add("End of Point: " + ii.ToString());
+        outputString.Add("");
+      }
+      ErrorEuler = Math.Sqrt(ErrorEuler);
+      outputString.Insert(0, "");
+      string sz_unit = formstate.uses_mm_data ? " mm " : " inch ";
+      string sz_alternate = formstate.uses_mm_data ? " inch " : " mm ";
+      double mult = formstate.uses_mm_data ? 1 / 25.4 : 25.4;
+      outputString.Insert(1, "*** units are in" + sz_unit + "unless noted otherwise ***");
+      outputString.Insert(2, "");
+      outputString.Insert(3, "Euler Fit (sqrt(sumsq()): " + ErrorEuler.ToString("F3"));
+      outputString.Insert(4, "Euler Fit (Average): " + (TotalRadial / (double)total_points_in_transform).ToString("F3"));
+      outputString.Insert(5, "Euler Fit (Max Radial): " + MaxRadial.ToString("F3"));
+      outputString.Insert(6,"");
+      outputString.Insert(7, "*** the next three items' units are " + sz_alternate + " ***");
+      outputString.Insert(8, "");
+      outputString.Insert(9, "Euler Fit (sqrt(sumsq()): " + (ErrorEuler * mult).ToString("F3"));
+      outputString.Insert(10, "Euler Fit (Average): " + (TotalRadial * mult / (double)total_points_in_transform).ToString("F3"));
+      outputString.Insert(11, "Euler Fit (Max Radial): " + (MaxRadial * mult).ToString("F3"));
+      outputString.Insert(12, "\n\n");
+      outputString.Add("");
+      outputString.Add("End of Check");
+      outputString.Add("");
+      outputString.Add("");
+      outputString.Add("");
+
+      #region Check some rotations
+
+      //From Tool to FRC
+
+      //Practice Transform
+      //Electroimpact.LinearAlgebra.c6dof Practice = new Electroimpact.LinearAlgebra.c6dof(10, 10, 10, 179.824*d2r, -.184*d2r, .135*d2r);
+      Electroimpact.LinearAlgebra.cMatrix fwd = new Electroimpact.LinearAlgebra.cMatrix(myBarrelFunction.PartToUaxis.GetMatrix());
+      Electroimpact.LinearAlgebra.cMatrix back = new Electroimpact.LinearAlgebra.cMatrix(fwd.Inverse());
+      Electroimpact.LinearAlgebra.c6dof Rot = new Electroimpact.LinearAlgebra.c6dof(0, 0, 0, 0*d2r, 0*d2r, 0);
+      Electroimpact.LinearAlgebra.cMatrix ret = new Electroimpact.LinearAlgebra.cMatrix(fwd.DotMe(Rot.GetMatrix()));
+      outputString.Add("Rx: " + (Rot.rX/d2r).ToString("F3").PadLeft(9) + " --> " + ret.rXrYrZ[0, 0].ToString("F3").PadLeft(9));
+      outputString.Add("Ry: " + (Rot.rY/d2r).ToString("F3").PadLeft(9) + " --> " + ret.rXrYrZ[1, 0].ToString("F3").PadLeft(9));
+      outputString.Add("Rz: " + (Rot.rZ/d2r).ToString("F3").PadLeft(9) + " --> " + ret.rXrYrZ[2, 0].ToString("F3").PadLeft(9));
+
+      //FRC to Tool
+      Rot = new Electroimpact.LinearAlgebra.c6dof(0, 0, 0, ret.rXrYrZ[0, 0] * d2r, ret.rXrYrZ[1, 0] * d2r, ret.rXrYrZ[2, 0] * d2r);
+      ret = new Electroimpact.LinearAlgebra.cMatrix(back.DotMe(Rot.GetMatrix()));
+      outputString.Add("Rx: " + (Rot.rX.RadiansToDegrees()).ToString("F3").PadLeft(9) + " --> " + ret.rXrYrZ[0, 0].ToString("F3").PadLeft(9));
+      outputString.Add("Ry: " + (Rot.rY.RadiansToDegrees()).ToString("F3").PadLeft(9) + " --> " + ret.rXrYrZ[1, 0].ToString("F3").PadLeft(9));
+      outputString.Add("Rz: " + (Rot.rZ.RadiansToDegrees()).ToString("F3").PadLeft(9) + " --> " + ret.rXrYrZ[2, 0].ToString("F3").PadLeft(9));
+
+      #endregion
+      string[] lines = new string[outputString.Count];
+      for (int ii = 0; ii < outputString.Count; ii++)
+      {
+        lines[ii] = outputString[ii];
+      }
+      txtEulerCheck.Lines = lines;
+    }
+
+    //send to CNC
+    private void btnNullComp_Click(object sender, EventArgs e)
+    {
+      Electroimpact.FANUC.Err_Code err;
+      Electroimpact.FANUC.OpenCNC CNC;// = new Electroimpact.FANUC.OpenCNC();
+
+      //DocuTrackProSE.InputBoxDialog ib = new DocuTrackProSE.InputBoxDialog();
+      //ib.FormPrompt = "Input CNC IP";
+      //ib.FormCaption = "CNC IP Dialog";
+      //string cncip = "192.168.1.";
+
+
+      DocuTrackProSE.InputBoxDialog ib = new DocuTrackProSE.InputBoxDialog();
+      ib.FormPrompt = "Input CNC IP";
+      ib.FormCaption = "CNC IP Dialog";
+      ib.DefaultValue = formstate.cnc_ip;
+      ib.ShowDialog();
+      if (!formstate.trySetCNC_IP(ib.InputResponse))
+      {
+        this.Enabled = true;
+        return;
+      }
+
+      CNC = new Electroimpact.FANUC.OpenCNC(formstate.cnc_ip, out err);
+      if( err != Electroimpact.FANUC.Err_Code.EW_OK)
+      {
+        MessageBox.Show("No Joy");
+        return;
+      }
+
+      {
+        {
+          Int32[] dong = new Int32[18];
+          if (CNC.Connected)
+          {
+
+            dong[0] = 0;//0
+            dong[1] = 0;//4
+            dong[2] = 0;//8
+            dong[3] = 0;//12
+            dong[4] = 0;//16
+            dong[5] = 0;//20
+
+            //Identity Matrix
+            dong[6] = (Int32)(1 * 1e6);
+            dong[7] = 0;
+            dong[8] = 0;
+            dong[9] = 0;
+
+            dong[10] = 0;
+            dong[11] = (Int32)(1 * 1e6);
+            dong[12] = 0;
+            dong[13] = 0;
+
+            dong[14] = 0;
+            dong[15] = 0;
+            dong[16] = (Int32)(1 * 1e6);
+            dong[17] = 0;
+
+            string Address = "D7300*4*18";
+            CNC.WritePMCData(Address, dong, out err);
+
+            Address = "D7396*4*18";
+            CNC.WritePMCData(Address, dong, out err);
+
+            Address = "D7492*4";
+            dong[0] = 0;
+            CNC.WritePMCData(Address, dong, out err);
+          }
+        }
+      }
+    }
+
+    private void btnCopyEuler_Click(object sender, EventArgs e)
+    {
+      string output = GetEuler(myBarrelFunction.PartToUaxis);
+      System.Windows.Forms.Clipboard.SetText(output);
+    }
+
+    private void btnCopyVaxisToFRC_Click(object sender, EventArgs e)
+    {
+      string output = GetEuler(myBarrelFunction.VaxisToFRC);
+      System.Windows.Forms.Clipboard.SetText(output);
+    }
+
+    private string GetEuler(Electroimpact.LinearAlgebra.c6dof Transform)
+    {
+      double d2r = Math.PI / 180.0;
+      string output = "";
+      output += Transform.X.ToString("F10") + ",";
+      output += Transform.Y.ToString("F10") + ",";
+      output += Transform.Z.ToString("F10") + ",";
+      output += (Transform.rX.RadiansToDegrees()).ToString("F10") + ",";
+      output += (Transform.rY.RadiansToDegrees()).ToString("F10") + ",";
+      output += (Transform.rZ.RadiansToDegrees()).ToString("F10") + ",";
+      Electroimpact.LinearAlgebra.cMatrix Minv = new Electroimpact.LinearAlgebra.cMatrix(Transform.GetMatrix());
+      Minv.InvertMe();
+      double[,] EulerInverse = Minv.GetMatrix;
+      for (int row = 0; row < 3; row++)
+      {
+        for (int col = 0; col < 4; col++)
+        {
+          output += EulerInverse[row, col].ToString("F10") + ",";
+        }
+      }
+      output = output.Remove(output.Length - 1);
+      return output;
+    }
+
+    private void btnPasteInPointsToTransform_Click(object sender, EventArgs e)
+    {
+      b_FirstTimeThru = true;
+      string textIN = System.Windows.Forms.Clipboard.GetText();
+      string[] lines = textIN.Split('\n');
+      Electroimpact.FileIO.cFileWriter fw = new Electroimpact.FileIO.cFileWriter();
+      string filename = Electroimpact.FileIO.cFileOther.GetExecutionDirectoryMethod() + "points.csv";
+
+      if (formstate.uses_barrel_transform)
+      {
+        if (formstate.uses_uv_table_transform)
+          fw.WriteLine(filename, "Xnom,Ynom,Znom,Upos,Vpos,Xmeas,Ymeas,Zmeas", false);
+        else
+          fw.WriteLine(filename, "Xnom,Ynom,Znom,Upos,Xmeas,Ymeas,Zmeas", false);
+      }
+      else
+      {
+        fw.WriteLine(filename, "Xnom,Ynom,Znom,Xmeas,Ymeas,Zmeas", false);
+      }
+
+      int nArgs = formstate.uses_uv_table_transform ? 8 : 7;
+
+      if (!formstate.uses_barrel_transform) // we are doing a regular rigid body transform
+        nArgs = 6;
+
+      for (int ii = 0; ii < lines.Length - 1; ii++)
+      {
+        string[] items = lines[ii].Split('\t');
+        if (items.Length == nArgs)
+        {
+          double[] values = new double[nArgs];
+          string line = "";
+          for (int jj = 0; jj < nArgs; jj++)
+          {
+            values[jj] = double.Parse(items[jj]);
+            line += values[jj].ToString("F6") + ",";
+          }
+          fw.WriteLine(filename, line, true);
+        }
+        else
+        {
+          if (formstate.uses_barrel_transform)
+          {
+            if (formstate.uses_uv_table_transform)
+            {
+              MessageBox.Show(lines[ii] + " wrong number of arguments. \n expected \"Xnom,Ynom,Znom,Upos,Vpos,Xmeas,Ymeas,Zmeas\"\nMake sure you intend to use v_table transform.");
+              return;
+            }
+            else
+            {
+              MessageBox.Show(lines[ii] + " wrong number of arguments. \n expected \"Xnom,Ynom,Znom,Upos,Xmeas,Ymeas,Zmeas\"\nDid you intend to use v_table transform?");
+              return;
+            }
+          }
+          else
+          {
+            MessageBox.Show(lines[ii] + " wrong number of arguments. \n expected \"Xnom,Ynom,Znom,Xmeas,Ymeas,Zmeas\"\nDid you intend to use a barrel transform?");
+            return;
+          }
+        }
+      }
+      Console.WriteLine(textIN);
+      btnTransform_Click(sender, e);
+    }
+
+    private void btnCopyEulerMatrix_Click(object sender, EventArgs e)
+    {
+      double[,] y_measEuler = myBarrelFunction.PartToUaxis.GetMatrix();
+      string ret = "";
+
+      for (int row = 0; row < 4; row++)
+      {
+        for (int col = 0; col < 4; col++)
+        {
+          ret += y_measEuler[row, col].ToString("F6") + ",";
+        }
+        ret += "\n";
+      }
+      System.Windows.Forms.Clipboard.SetText(ret);
+    }
+
+    private void btnPastePoints_Click(object sender, EventArgs e)
+    {
+      Transform(false);
+    }
+
+    private void Transform(bool reverse)
+    {
+      string textIN = System.Windows.Forms.Clipboard.GetText();
+      string[] lines = textIN.Split('\n');
+      System.Collections.Generic.List<Electroimpact.LinearAlgebra.c6dof> myVectors = new List<Electroimpact.LinearAlgebra.c6dof>();
+      bool _3space = true;
+      int n_args_3space = formstate.uses_uv_table_transform ? 5 : 4;
+      int n_args_6space = formstate.uses_uv_table_transform ? 8 : 7;
+
+      if (!formstate.uses_barrel_transform)
+      {
+        n_args_3space = 3;
+        n_args_6space = 6;
+      }
+
+      for (int ii = 0; ii < lines.Length; ii++)
+      {
+        string[] items = lines[ii].Split('\t');
+        if (items.Length == n_args_3space)
+        {
+          double[] values = new double[n_args_3space];
+          for (int jj = 0; jj < n_args_3space; jj++)
+          {
+            values[jj] = double.Parse(items[jj]);
+          }
+          if (reverse)
+          {
+            Electroimpact.LinearAlgebra.c6dof pt = new Electroimpact.LinearAlgebra.c6dof(values[0], values[1], values[2], 0, 0, 0);
+            if (formstate.uses_barrel_transform)
+            {
+              if (formstate.uses_uv_table_transform)
+                myVectors.Add(new Electroimpact.LinearAlgebra.c6dof(myBarrelFunction.FRCtoBarrel(pt.GetMatrix(), values[n_args_3space - 2], values[n_args_3space - 1])));
+              else
+                myVectors.Add(new Electroimpact.LinearAlgebra.c6dof(myBarrelFunction.FRCtoBarrel(pt.GetMatrix(), values[n_args_3space - 1])));
+            }
+            else
+              myVectors.Add(new Electroimpact.LinearAlgebra.c6dof(myBarrelFunction.FRCtoBarrel(pt.GetMatrix(), 0.0)));
+          }
+          else
+          {
+            Electroimpact.LinearAlgebra.c6dof pt = new Electroimpact.LinearAlgebra.c6dof(values[0], values[1], values[2], 0, 0, 0);
+            if (formstate.uses_barrel_transform)
+            {
+              if (formstate.uses_uv_table_transform)
+                myVectors.Add(myBarrelFunction.BarrelToFRC(pt.GetMatrix(), values[n_args_3space - 2], values[n_args_3space - 1]));
+              else
+                myVectors.Add(myBarrelFunction.BarrelToFRC(pt.GetMatrix(), values[n_args_3space - 1]));
+            }
+            else
+              myVectors.Add(myBarrelFunction.BarrelToFRC(pt.GetMatrix(), 0.0));           
+          }
+        }
+        if (items.Length == n_args_6space)
+        {
+          _3space = false;
+          double[] values = new double[n_args_6space];
+          for (int jj = 0; jj < n_args_6space; jj++)
+          {
+            values[jj] = double.Parse(items[jj]);
+          }
+          Electroimpact.LinearAlgebra.c6dof pt = new Electroimpact.LinearAlgebra.c6dof(values[0], values[1], values[2], values[3].DegreesToRadians(), values[4].DegreesToRadians(), values[5].DegreesToRadians());
+          if (reverse)
+          {
+            if (formstate.uses_barrel_transform)
+            {
+              if (formstate.uses_uv_table_transform)
+                myVectors.Add(new Electroimpact.LinearAlgebra.c6dof(myBarrelFunction.FRCtoBarrel(pt.GetMatrix(), values[n_args_6space - 2], values[n_args_6space - 1])));
+              else
+                myVectors.Add(new Electroimpact.LinearAlgebra.c6dof(myBarrelFunction.FRCtoBarrel(pt.GetMatrix(), values[n_args_6space - 1])));
+            }
+            else
+              myVectors.Add(new Electroimpact.LinearAlgebra.c6dof(myBarrelFunction.FRCtoBarrel(pt.GetMatrix(), 0.0)));
+          }
+          else
+          {
+            if (formstate.uses_barrel_transform)
+            {
+              if (formstate.uses_uv_table_transform)
+                myVectors.Add(myBarrelFunction.BarrelToFRC(pt.GetMatrix(), values[n_args_6space - 2], values[n_args_6space - 1]));
+              else
+                myVectors.Add(myBarrelFunction.BarrelToFRC(pt.GetMatrix(), values[n_args_6space - 1]));
+            }
+            else
+              myVectors.Add(myBarrelFunction.BarrelToFRC(pt.GetMatrix(), 0.0));
+          }
+        }
+      }
+      string[] linesout = new string[myVectors.Count + 1];
+      linesout[0] = "X    ".PadLeft(12) + "Y    ".PadLeft(12) + "Z    ".PadLeft(12);
+      for (int ii = 0; ii < myVectors.Count; ii++)
+      {
+        Electroimpact.LinearAlgebra.c6dof pt = myVectors[ii];
+        if (_3space)
+          linesout[ii + 1] = pt.X.ToString("F4").PadLeft(12) + 
+                             pt.Y.ToString("F4").PadLeft(12) + 
+                             pt.Z.ToString("F4").PadLeft(12);
+        else
+          linesout[ii + 1] = pt.X.ToString("F4").PadLeft(12) + 
+                             pt.Y.ToString("F4").PadLeft(12) + 
+                             pt.Z.ToString("F4").PadLeft(12) + 
+                             pt.rX.RadiansToDegrees().ToString("F4").PadLeft(12) + 
+                             pt.rY.RadiansToDegrees().ToString("F4").PadLeft(12) + 
+                             pt.rZ.RadiansToDegrees().ToString("F4").PadLeft(12);
+      }
+      txtPointsTransformed.Lines = linesout;
+    }
+
+    private void btnGetaCSVCopy_Click(object sender, EventArgs e)
+    {
+      string outtext = "";
+      Electroimpact.csString eis = new Electroimpact.csString();
+      for (int ii = 1; ii < txtPointsTransformed.Lines.Length; ii++)
+      {
+        string line = txtPointsTransformed.Lines[ii];
+        csString s = new csString();
+        s.String = line;
+        line = "";
+        bool killing_white = true;
+        while (s.GetLeftNoAdv(1) != "")
+        {
+          string t = s.GetLeft(1);
+          if (t == " ")
+          {
+            if (!killing_white)
+            {
+              line += ",";
+              killing_white = true;
+            }
+          }
+          else
+          {
+            line += t;
+            killing_white = false;
+          }
+
+        }
+        string[] test2 = line.Split(',');
+        int jj;
+        for (jj = 0; jj < test2.Length - 1; jj++)
+          outtext += test2[jj] + "\t";
+        outtext += test2[jj];
+        if( ii < txtPointsTransformed.Lines.Length - 1 )
+          outtext += "\n";
+      }
+      System.Windows.Forms.Clipboard.Clear();
+      System.Windows.Forms.Clipboard.SetText(outtext);
+    }
+
+    private void btnCompToCNC_Click(object sender, EventArgs e)
+    {
+      this.Enabled = false;
+      Electroimpact.FANUC.Err_Code err;
+      Electroimpact.FANUC.OpenCNC CNC;// = new Electroimpact.FANUC.OpenCNC();
+
+        DocuTrackProSE.ListBoxDialog lb = new DocuTrackProSE.ListBoxDialog();
+        lb.FormPrompt = "Select the Mandrel Unit being transformed.";
+        lb.FormCaption = "Select Mandrel Unit";
+
+        List<Electroimpact.TransformerInfo.cBarrelTransform> BarrelTrans = TransformerInfo.getListOfBarrelT();
+
+        lb.ShowDialog();
+
+        if (lb.DialogResult == DialogResult.Cancel || lb.DialogResult == DialogResult.Yes)
+        {
+          this.Enabled = true;
+          return;
+        }
+
+        int barrelUnit = lb.InputResponse;
+      
+
+        DocuTrackProSE.InputBoxDialog ib = new DocuTrackProSE.InputBoxDialog();
+        ib.FormPrompt = "Input CNC IP";
+        ib.FormCaption = "CNC IP Dialog";
+        string cncip = "192.168.1.";
+
+        ib.DefaultValue = formstate.cnc_ip;
+        DialogResult dr = ib.ShowDialog();
+        if (dr == DialogResult.OK)
+        {
+          if (!formstate.trySetCNC_IP(ib.InputResponse))
+          {
+            this.Enabled = true;
+            return;
+          }
+        }
+        else
+        {
+          this.Enabled = true;
+          return;
+        }
+        CNC = new Electroimpact.FANUC.OpenCNC(formstate.cnc_ip, out err);
+        if (err != Electroimpact.FANUC.Err_Code.EW_OK)
+        {
+          MessageBox.Show("No Joy");
+          this.Enabled = true;
+          return;
+        }
+
+      {
+        {
+          Int32[] dong = new Int32[18];
+          if (CNC.Connected)
+          {
+            double mult = formstate.uses_mm_data ? 1.0 : 25.4;
+            Int32[] values = new Int32[18];
+            Int32[] valuesback = new Int32[18];
+
+            values[0] = (Int32)(Math.Round(myBarrelFunction.PartToUaxis.X * mult, OffsetPower) * OffsetPrecision);
+            values[1] = (Int32)(Math.Round(myBarrelFunction.PartToUaxis.Y * mult, OffsetPower) * OffsetPrecision);
+            values[2] = (Int32)(Math.Round(myBarrelFunction.PartToUaxis.Z * mult, OffsetPower) * OffsetPrecision);
+            values[3] = (Int32)(Math.Round(myBarrelFunction.PartToUaxis.rX.RadiansToDegrees(), AnlgePower) * AnglePrecision);
+            values[4] = (Int32)(Math.Round(myBarrelFunction.PartToUaxis.rY.RadiansToDegrees(), AnlgePower) * AnglePrecision);
+            values[5] = (Int32)(Math.Round(myBarrelFunction.PartToUaxis.rZ.RadiansToDegrees(), AnlgePower) * AnglePrecision);
+
+            //Saving transform for PartToUaxis
+              BarrelTrans[barrelUnit].MandrelToSpin.X = values[0];
+              BarrelTrans[barrelUnit].MandrelToSpin.Y = values[1];
+              BarrelTrans[barrelUnit].MandrelToSpin.Z = values[2];
+              BarrelTrans[barrelUnit].MandrelToSpin.rX = values[3];
+              BarrelTrans[barrelUnit].MandrelToSpin.rY = values[4];
+              BarrelTrans[barrelUnit].MandrelToSpin.rZ = values[5];
+
+            Electroimpact.LinearAlgebra.cMatrix EulerInverse = new Electroimpact.LinearAlgebra.cMatrix(myBarrelFunction.PartToUaxis.Inverse());
+            double[,] data = EulerInverse.GetMatrix;
+            values[6] = (Int32)(Math.Round(data[0, 0], MatrixPower) * MatrixPrecision);
+            values[7] = (Int32)(Math.Round(data[0, 1], MatrixPower) * MatrixPrecision);
+            values[8] = (Int32)(Math.Round(data[0, 2], MatrixPower) * MatrixPrecision);
+            values[9] = (Int32)(Math.Round(data[0, 3] * mult, OffsetPower) * OffsetPrecision);
+            values[10] = (Int32)(Math.Round(data[1, 0], MatrixPower) * MatrixPrecision);
+            values[11] = (Int32)(Math.Round(data[1, 1], MatrixPower) * MatrixPrecision);
+            values[12] = (Int32)(Math.Round(data[1, 2], MatrixPower) * MatrixPrecision);
+            values[13] = (Int32)(Math.Round(data[1, 3] * mult, OffsetPower) * OffsetPrecision);
+            values[14] = (Int32)(Math.Round(data[2, 0], MatrixPower) * MatrixPrecision);
+            values[15] = (Int32)(Math.Round(data[2, 1], MatrixPower) * MatrixPrecision);
+            values[16] = (Int32)(Math.Round(data[2, 2], MatrixPower) * MatrixPrecision);
+            values[17] = (Int32)(Math.Round(data[2, 3] * mult, OffsetPower) * OffsetPrecision);
+
+            string Address = "D7300*4*18";
+            CNC.WritePMCData(Address, values, out err);
+            valuesback = CNC.ReadPMCRange(Address, out err);
+            if (valuesback.Length == values.Length)
+            {
+              for (int ii = 0; ii < values.Length; ii++)
+              {
+                if( !Equal2(valuesback[ii],values[ii], 1) )
+                {
+                  MessageBox.Show("Bad Download");
+                  this.Enabled = true;
+                  return;
+                }
+              }
+            }
+            else
+            {
+              MessageBox.Show("Bad Download");
+              this.Enabled = true;
+              return;
+            }
+
+            if (err != Electroimpact.FANUC.Err_Code.EW_OK)
+              MessageBox.Show("Error communicating with CNC");
+
+            values[0] = (Int32)(Math.Round(myBarrelFunction.VaxisToFRC.X * mult, OffsetPower) * OffsetPrecision);
+            values[1] = (Int32)(Math.Round(myBarrelFunction.VaxisToFRC.Y * mult, OffsetPower) * OffsetPrecision);
+            values[2] = (Int32)(Math.Round(myBarrelFunction.VaxisToFRC.Z * mult, OffsetPower) * OffsetPrecision);
+            values[3] = (Int32)(Math.Round(myBarrelFunction.VaxisToFRC.rX.RadiansToDegrees(), AnlgePower) * AnglePrecision);
+            values[4] = (Int32)(Math.Round(myBarrelFunction.VaxisToFRC.rY.RadiansToDegrees(), AnlgePower) * AnglePrecision);
+            values[5] = (Int32)(Math.Round(myBarrelFunction.VaxisToFRC.rZ.RadiansToDegrees(), AnlgePower) * AnglePrecision);
+
+            //Saving transform for VaxisToFRC
+            BarrelTrans[barrelUnit].SpinToFRC.X = values[0];
+            BarrelTrans[barrelUnit].SpinToFRC.Y = values[1];
+            BarrelTrans[barrelUnit].SpinToFRC.Z = values[2];
+            BarrelTrans[barrelUnit].SpinToFRC.rX = values[3];
+            BarrelTrans[barrelUnit].SpinToFRC.rY = values[4];
+            BarrelTrans[barrelUnit].SpinToFRC.rZ = values[5];
+
+            EulerInverse = new Electroimpact.LinearAlgebra.cMatrix(myBarrelFunction.VaxisToFRC.Inverse());
+            data = EulerInverse.GetMatrix;
+            values[6] = (Int32)(Math.Round(data[0, 0], MatrixPower) * MatrixPrecision);
+            values[7] = (Int32)(Math.Round(data[0, 1], MatrixPower) * MatrixPrecision);
+            values[8] = (Int32)(Math.Round(data[0, 2], MatrixPower) * MatrixPrecision);
+            values[9] = (Int32)(Math.Round(data[0, 3] * mult, OffsetPower) * OffsetPrecision);
+            values[10] = (Int32)(Math.Round(data[1, 0], MatrixPower) * MatrixPrecision);
+            values[11] = (Int32)(Math.Round(data[1, 1], MatrixPower) * MatrixPrecision);
+            values[12] = (Int32)(Math.Round(data[1, 2], MatrixPower) * MatrixPrecision);
+            values[13] = (Int32)(Math.Round(data[1, 3] * mult, OffsetPower) * OffsetPrecision);
+            values[14] = (Int32)(Math.Round(data[2, 0], MatrixPower) * MatrixPrecision);
+            values[15] = (Int32)(Math.Round(data[2, 1], MatrixPower) * MatrixPrecision);
+            values[16] = (Int32)(Math.Round(data[2, 2], MatrixPower) * MatrixPrecision);
+            values[17] = (Int32)(Math.Round(data[2, 3] * mult, OffsetPower) * OffsetPrecision);
+
+            Address = "D7396*4*18";
+            CNC.WritePMCData(Address, values, out err);
+            valuesback = CNC.ReadPMCRange(Address, out err);
+            if (valuesback.Length == values.Length)
+            {
+              for (int ii = 0; ii < values.Length; ii++)
+              {
+                if (!Equal2(valuesback[ii], values[ii], 1))
+                {
+                  MessageBox.Show("Bad Download");
+                  this.Enabled = true;
+                  return;
+                }
+              }
+            }
+            else
+            {
+              MessageBox.Show("Bad Download");
+              this.Enabled = true;
+              return;
+            }
+
+            if (err != Electroimpact.FANUC.Err_Code.EW_OK)
+              MessageBox.Show("Error communicating with CNC");
+
+            Address = "D7492*4";
+            CNC.WritePMCData(Address, (Int32)(Math.Round(myBarrelFunction.A_x * mult, OffsetPower) * OffsetPrecision));
+            int down = (Int32)(Math.Round(myBarrelFunction.A_x * mult, OffsetPower) * OffsetPrecision);
+            int back = CNC.ReadPMCData(Address, out err);
+
+            BarrelTrans[barrelUnit].Ax = down;
+            TransformerInfo.SaveListOfBarrelT(BarrelTrans);
+
+            if (!Equal2(down, back, 1))
+            {
+              MessageBox.Show("Bad Download");
+              this.Enabled = true;
+              return;
+            }
+          }
+        }
+      }
+      MessageBox.Show("Transform Accepted");
+      this.Enabled = true;
+      }
+
+    private bool LoadFromTransforms()
+    {
+      Electroimpact.FileIO.cFileReader fr = new Electroimpact.FileIO.cFileReader();
+
+      if (!Electroimpact.FileIO.cFileOther.FileExistsMethod("Transforms.csv"))
+      {
+        MessageBox.Show("Transforms.csv does not exist!");
+        return false;
+      }
+      string lastline = "";
+      fr.OpenFile("Transforms.csv");
+      while (fr.Peek())
+      {
+        lastline = fr.ReadLine();
+      }
+      string[] transform = lastline.Split(',');
+      double[] values = new double[transform.Length];
+      if( transform.Length < 13 )
+      {
+        MessageBox.Show("Bad last transform");
+        return false;
+      }
+      for (int ii = 0; ii < 13; ii++)
+      {
+        double test;
+        if (double.TryParse(transform[ii], out test)) values[ii] = test;
+        else
+        {
+          MessageBox.Show("Last Transform is Invalid");
+          return false;
+        }
+      }
+      double d2r = Math.PI / 180.0;
+      myBarrelFunction.PartToUaxis.X = values[0];
+      myBarrelFunction.PartToUaxis.Y = values[1];
+      myBarrelFunction.PartToUaxis.Z = values[2];
+      myBarrelFunction.PartToUaxis.rX = values[3] * d2r;
+      myBarrelFunction.PartToUaxis.rY = values[4] * d2r;
+      myBarrelFunction.PartToUaxis.rZ = values[5] * d2r;
+      myBarrelFunction.A_x = values[6];
+      myBarrelFunction.VaxisToFRC.X = values[7];
+      myBarrelFunction.VaxisToFRC.Y = values[8];
+      myBarrelFunction.VaxisToFRC.Z = values[9];
+      myBarrelFunction.VaxisToFRC.rX = values[10] * d2r;
+      myBarrelFunction.VaxisToFRC.rY = values[11] * d2r;
+      myBarrelFunction.VaxisToFRC.rZ = values[12] * d2r;
+
+      //fw.WriteLine("Transforms.csv",
+      //                              y_measBarrelFunction.PartToUaxis.X.ToString("F3") + "," +
+      //                              y_measBarrelFunction.PartToUaxis.Y.ToString("F3") + "," +
+      //                              y_measBarrelFunction.PartToUaxis.Z.ToString("F3") + "," +
+      //                              (y_measBarrelFunction.PartToUaxis.rX.RadiansToDegrees()).ToString("F6") + "," +
+      //                              (y_measBarrelFunction.PartToUaxis.rY.RadiansToDegrees()).ToString("F6") + "," +
+      //                              (y_measBarrelFunction.PartToUaxis.rZ.RadiansToDegrees()).ToString("F6") + "," +
+      //                              y_measBarrelFunction.A_x.ToString("F6") + "," +
+      //                              y_measBarrelFunction.VaxisToFRC.X.ToString("F3") + "," +
+      //                              y_measBarrelFunction.VaxisToFRC.Y.ToString("F3") + "," +
+      //                              y_measBarrelFunction.VaxisToFRC.Z.ToString("F3") + "," +
+      //                              (y_measBarrelFunction.VaxisToFRC.rX.RadiansToDegrees()).ToString("F6") + "," +
+      //                              (y_measBarrelFunction.VaxisToFRC.rY.RadiansToDegrees()).ToString("F6") + "," +
+      //                              (y_measBarrelFunction.VaxisToFRC.rZ.RadiansToDegrees()).ToString("F6") + ","
+      //                              , true);
+      fr.CloseFile();
+      return true;
+    }
+
+    private void btnVerifyCompOnCNC_Click(object sender, EventArgs e)
+    {
+      this.Enabled = false;
+      Electroimpact.FANUC.Err_Code err;
+      Electroimpact.FANUC.OpenCNC CNC;// = new Electroimpact.FANUC.OpenCNC();
+      DocuTrackProSE.InputBoxDialog ib = new DocuTrackProSE.InputBoxDialog();
+      ib.FormPrompt = "Input CNC IP";
+      ib.FormCaption = "CNC IP Dialog";
+
+      ib.DefaultValue = formstate.cnc_ip;
+      DialogResult dr = ib.ShowDialog();
+
+      if (dr == DialogResult.OK)
+      {
+        if (!formstate.trySetCNC_IP(ib.InputResponse))
+        {
+          this.Enabled = true;
+          return;
+        }
+      }
+      else
+      {
+        this.Enabled = true;
+        return;
+      }
+
+      CNC = new Electroimpact.FANUC.OpenCNC(formstate.cnc_ip, out err);
+      if (err != Electroimpact.FANUC.Err_Code.EW_OK)
+      {
+        MessageBox.Show("No Joy");
+        this.Enabled = true;
+        return;
+      }
+
+      {
+        {
+          Int32[] dong = new Int32[18];
+          if (!LoadFromTransforms())
+          {
+            this.Enabled = true;
+            return;
+          }
+          if (CNC.Connected)
+          {
+            double mult = 25.4;
+            double d2r = Math.PI / 180.0;
+            Int32[] values = new Int32[18];
+            Int32[] valuesback = new Int32[18];
+
+            values[0] = (Int32)(Math.Round(myBarrelFunction.PartToUaxis.X * mult, OffsetPower) * OffsetPrecision);
+            values[1] = (Int32)(Math.Round(myBarrelFunction.PartToUaxis.Y * mult, OffsetPower) * OffsetPrecision);
+            values[2] = (Int32)(Math.Round(myBarrelFunction.PartToUaxis.Z * mult, OffsetPower) * OffsetPrecision);
+            values[3] = (Int32)(Math.Round(myBarrelFunction.PartToUaxis.rX.RadiansToDegrees(), AnlgePower) * AnglePrecision);
+            values[4] = (Int32)(Math.Round(myBarrelFunction.PartToUaxis.rY.RadiansToDegrees(), AnlgePower) * AnglePrecision);
+            values[5] = (Int32)(Math.Round(myBarrelFunction.PartToUaxis.rZ.RadiansToDegrees(), AnlgePower) * AnglePrecision);
+
+            Electroimpact.LinearAlgebra.cMatrix EulerInverse = new Electroimpact.LinearAlgebra.cMatrix(myBarrelFunction.PartToUaxis.Inverse());
+            double[,] data = EulerInverse.GetMatrix;
+            values[6] = (Int32)(Math.Round(data[0, 0], MatrixPower) * MatrixPrecision);
+            values[7] = (Int32)(Math.Round(data[0, 1], MatrixPower) * MatrixPrecision);
+            values[8] = (Int32)(Math.Round(data[0, 2], MatrixPower) * MatrixPrecision);
+            values[9] = (Int32)(Math.Round(data[0, 3] * mult, OffsetPower) * OffsetPrecision);
+            values[10] = (Int32)(Math.Round(data[1, 0], MatrixPower) * MatrixPrecision);
+            values[11] = (Int32)(Math.Round(data[1, 1], MatrixPower) * MatrixPrecision);
+            values[12] = (Int32)(Math.Round(data[1, 2], MatrixPower) * MatrixPrecision);
+            values[13] = (Int32)(Math.Round(data[1, 3] * mult, OffsetPower) * OffsetPrecision);
+            values[14] = (Int32)(Math.Round(data[2, 0], MatrixPower) * MatrixPrecision);
+            values[15] = (Int32)(Math.Round(data[2, 1], MatrixPower) * MatrixPrecision);
+            values[16] = (Int32)(Math.Round(data[2, 2], MatrixPower) * MatrixPrecision);
+            values[17] = (Int32)(Math.Round(data[2, 3] * mult, OffsetPower) * OffsetPrecision);
+
+            string Address = "D7300*4*18";
+            valuesback = CNC.ReadPMCRange(Address, out err);
+            if (valuesback.Length == values.Length)
+            {
+              for (int ii = 0; ii < values.Length; ii++)
+              {
+                if (!Equal2(valuesback[ii], values[ii], 10))
+                {
+                  MessageBox.Show("Bad Download");
+                  this.Enabled = true;
+                  return;
+                }
+              }
+            }
+            else
+            {
+              MessageBox.Show("Bad Download");
+              this.Enabled = true;
+              return;
+            }
+
+
+            values[0] = (Int32)(Math.Round(myBarrelFunction.VaxisToFRC.X * mult, OffsetPower) * OffsetPrecision);
+            values[1] = (Int32)(Math.Round(myBarrelFunction.VaxisToFRC.Y * mult, OffsetPower) * OffsetPrecision);
+            values[2] = (Int32)(Math.Round(myBarrelFunction.VaxisToFRC.Z * mult, OffsetPower) * OffsetPrecision);
+            values[3] = (Int32)(Math.Round(myBarrelFunction.VaxisToFRC.rX.RadiansToDegrees(), AnlgePower) * AnglePrecision);
+            values[4] = (Int32)(Math.Round(myBarrelFunction.VaxisToFRC.rY.RadiansToDegrees(), AnlgePower) * AnglePrecision);
+            values[5] = (Int32)(Math.Round(myBarrelFunction.VaxisToFRC.rZ.RadiansToDegrees(), AnlgePower) * AnglePrecision);
+
+            EulerInverse = new Electroimpact.LinearAlgebra.cMatrix(myBarrelFunction.VaxisToFRC.Inverse());
+            data = EulerInverse.GetMatrix;
+            values[6] = (Int32)(Math.Round(data[0, 0], MatrixPower) * MatrixPrecision);
+            values[7] = (Int32)(Math.Round(data[0, 1], MatrixPower) * MatrixPrecision);
+            values[8] = (Int32)(Math.Round(data[0, 2], MatrixPower) * MatrixPrecision);
+            values[9] = (Int32)(Math.Round(data[0, 3] * mult, OffsetPower) * OffsetPrecision);
+            values[10] = (Int32)(Math.Round(data[1, 0], MatrixPower) * MatrixPrecision);
+            values[11] = (Int32)(Math.Round(data[1, 1], MatrixPower) * MatrixPrecision);
+            values[12] = (Int32)(Math.Round(data[1, 2], MatrixPower) * MatrixPrecision);
+            values[13] = (Int32)(Math.Round(data[1, 3] * mult, OffsetPower) * OffsetPrecision);
+            values[14] = (Int32)(Math.Round(data[2, 0], MatrixPower) * MatrixPrecision);
+            values[15] = (Int32)(Math.Round(data[2, 1], MatrixPower) * MatrixPrecision);
+            values[16] = (Int32)(Math.Round(data[2, 2], MatrixPower) * MatrixPrecision);
+            values[17] = (Int32)(Math.Round(data[2, 3] * mult, OffsetPower) * OffsetPrecision);
+
+            Address = "D7396*4*18";
+            valuesback = CNC.ReadPMCRange(Address, out err);
+            if (valuesback.Length == values.Length)
+            {
+              for (int ii = 0; ii < values.Length; ii++)
+              {
+                if (!Equal2(valuesback[ii], values[ii], 10))
+                {
+                  MessageBox.Show("Bad Download");
+                  this.Enabled = true;
+                  return;
+                }
+              }
+            }
+            else
+            {
+              MessageBox.Show("Bad Download");
+              this.Enabled = true;
+              return;
+            }
+          }
+        }
+      }
+      MessageBox.Show("Yep...All is well");
+      this.Enabled = true;
+    }
+    
+    private bool Equal2(double left, double right, double epsilon)
+    {
+      return Math.Abs(left - right) <= epsilon;
+    }
+
+    private void btnPasteToReverse_Click(object sender, EventArgs e)
+    {
+      Transform(true);
+    }
+
+    private void chkShowAdvanced_CheckedChanged(object sender, EventArgs e)
+    {
+      if (chkShowAdvanced.Checked)
+      {
+        //this.Size.Width = 1233;//"1233, 893";
+        //this.Size.Height = 893;
+        this.Size = new Size(1233, 893);
+      }
+      else
+      {
+        //453, 895
+        //this.Size.Width = 453;//"1233, 893";
+        //this.Size.Height = 895;
+        this.Size = new Size(453, 893);
+      }
+        
+    }
+
+    private void checked_points_list_MouseUp(object sender, MouseEventArgs e)
+    {
+      for (int ii = 0; ii < myPoints.Count; ii++)
+        myPoints[ii].bUseInXform = false;
+      for (int ii = 0; ii < checked_points_list.CheckedIndices.Count; ii++)
+      {
+        int jj = checked_points_list.CheckedIndices[ii];
+        myPoints[checked_points_list.CheckedIndices[ii]].bUseInXform = true;
+      }
+    }
+
+    private void frmBarrelTransformer_LocationChanged(object sender, EventArgs e)
+    {
+      if (this.Visible)
+      {
+        formstate.fsp = this.Location;
+        cFormState.Save(formstate);
+      }
+    }
+
+    private void menustrip_v_argument_option_Click(object sender, EventArgs e)
+    {
+      menustrip_v_argument_option.Checked = !menustrip_v_argument_option.Checked;
+      formstate.uses_uv_table_transform = menustrip_v_argument_option.Checked;
+      update_optionlist();
+    }
+
+    private void useXuFunctionAxToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      menustrip_useXuFunction_Ax.Checked = !menustrip_useXuFunction_Ax.Checked;
+      formstate.uses_uofx_function = menustrip_useXuFunction_Ax.Checked;
+    }
+
+    private void menustrip_Barrel_Transform_Click(object sender, EventArgs e)
+    {
+      menustrip_Barrel_Transform.Checked = !menustrip_Barrel_Transform.Checked;
+      formstate.uses_barrel_transform = menustrip_Barrel_Transform.Checked;
+      update_optionlist();
+    }
+
+    private void menustrip_mm_data_Click(object sender, EventArgs e)
+    {
+      menustrip_mm_data.Checked = !menustrip_mm_data.Checked;
+      formstate.uses_mm_data = menustrip_mm_data.Checked;
+      update_optionlist();
+    }
+
+    private void update_optionlist()
+    {
+      menustrip_v_argument_option.Enabled = menustrip_Barrel_Transform.Checked;
+      menustrip_useXuFunction_Ax.Enabled = menustrip_Barrel_Transform.Checked;
+      formstate.SaveMe();
+      setuptooltips();
+    }
+
+    private void setuptooltips()
+    {
+      string sz_units = formstate.uses_mm_data ? "mm " : "INCHES ";
+
+      btnPasteInPointsToTransform.Text = formstate.uses_mm_data ? "Paste in points (mm data)" : "Paste in points (inch data)";
+
+      if (formstate.uses_barrel_transform)
+      {
+        if (formstate.uses_uv_table_transform)
+        {
+          toolTip1.SetToolTip(btnPasteInPointsToTransform, sz_units + "In order \"Xnom Ynom Znom Upos Vpos Xmeas  Ymeas Zmeas\".  Any number of sets is possible, copy them out of Excel and tap this button to paste.  Input must be " + sz_units);
+          toolTip1.SetToolTip(btnPastePoints, "Any number of sets is possible, copy them out of Excel and tap this button to paste. In order \n\"X,Y,Z,Upos,Vpos\" or \n\"X,Y,Z,A,B,C,Upos,Vpos\"");
+          toolTip1.SetToolTip(btnPasteToReverse, "Any number of sets is possible, copy them out of Excel and tap this button to paste. In order \n\"X,Y,Z,Upos,Vpos\" or \n\"X,Y,Z,A,B,C,Upos,Vpos\"");
+        }
+        else
+        {
+          toolTip1.SetToolTip(btnPasteInPointsToTransform, sz_units + "In order \"Xnom Ynom Znom Upos Xmeas  Ymeas Zmeas\".  Any number of sets is possible, copy them out of Excel and tap this button to paste.  Input must be " + sz_units);
+          toolTip1.SetToolTip(btnPastePoints, "Any number of sets is possible, copy them out of Excel and tap this button to paste. In order \n\"X,Y,Z,Upos\" or \n\"X,Y,Z,A,B,C,Upos\"");
+          toolTip1.SetToolTip(btnPasteToReverse, "Any number of sets is possible, copy them out of Excel and tap this button to paste. In order \n\"X,Y,Z,Upos\" or \n\"X,Y,Z,A,B,C,Upos\"");
+        }
+      }
+      else
+      {
+        toolTip1.SetToolTip(btnPasteInPointsToTransform, sz_units + "In order \"Xnom Ynom Znom Xmeas Ymeas Zmeas\".  Any number of sets is possible, copy them out of Excel and tap this button to paste.  Input must be " + sz_units);
+        toolTip1.SetToolTip(btnPastePoints, "Any number of sets is possible, copy them out of Excel and tap this button to paste. In order \n\"X,Y,Z\" or \n\"X,Y,Z,A,B,C\"");
+        toolTip1.SetToolTip(btnPasteToReverse, "Any number of sets is possible, copy them out of Excel and tap this button to paste. In order \n\"X,Y,Z\" or \n\"X,Y,Z,A,B,C\"");
+      }
+    }
+
+    #endregion
+
+
+  }
+}
+
+#region input box control
+namespace DocuTrackProSE
+{
+  /// <summary>
+  /// Summary description for InputBox.
+  /// 
+  public class InputBoxDialog : System.Windows.Forms.Form
+  {
+
+    #region Windows Contols and Constructor
+
+    private System.Windows.Forms.Label lblPrompt;
+    private System.Windows.Forms.Button btnOK;
+    private System.Windows.Forms.Button button1;
+    private System.Windows.Forms.TextBox txtInput;
+    /// <summary>
+    /// Required designer variable.
+    /// 
+    private System.ComponentModel.Container components = null;
+
+    public InputBoxDialog()
+    {
+      //
+      // Required for Windows Form Designer support
+      //
+      InitializeComponent();
+
+      //
+      // TODO: Add ay_nom constructor code after InitializeComponent call
+      //
+    }
+
+    #endregion
+
+    #region Dispose
+
+    /// <summary>
+    /// Clean up ay_nom resources being used.
+    /// 
+    protected override void Dispose(bool disposing)
+    {
+      if (disposing)
+      {
+        if (components != null)
+        {
+          components.Dispose();
+        }
+      }
+      base.Dispose(disposing);
+    }
+
+    #endregion
+
+    #region Windows Form Designer generated code
+    /// <summary>
+    /// Required method for Designer support - do not modify
+    /// the contents of this method with the code editor.
+    /// 
+    private void InitializeComponent()
+    {
+      this.lblPrompt = new System.Windows.Forms.Label();
+      this.btnOK = new System.Windows.Forms.Button();
+      this.button1 = new System.Windows.Forms.Button();
+      this.txtInput = new System.Windows.Forms.TextBox();
+      this.SuspendLayout();
+      // 
+      // lblPrompt
+      // 
+      this.lblPrompt.Anchor =
+        ((System.Windows.Forms.AnchorStyles)
+        ((((System.Windows.Forms.AnchorStyles.Top |
+        System.Windows.Forms.AnchorStyles.Bottom)
+        | System.Windows.Forms.AnchorStyles.Left)
+        | System.Windows.Forms.AnchorStyles.Right)));
+      this.lblPrompt.BackColor = System.Drawing.SystemColors.Control;
+      this.lblPrompt.Font =
+        new System.Drawing.Font("Microsoft Sans Serif", 9.75F,
+        System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+        ((System.Byte)(0)));
+      this.lblPrompt.Location = new System.Drawing.Point(12, 9);
+      this.lblPrompt.Name = "lblPrompt";
+      this.lblPrompt.Size = new System.Drawing.Size(302, 82);
+      this.lblPrompt.TabIndex = 3;
+      // 
+      // btnOK
+      // 
+      this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+      this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+      this.btnOK.Location = new System.Drawing.Point(326, 24);
+      this.btnOK.Name = "btnOK";
+      this.btnOK.Size = new System.Drawing.Size(64, 24);
+      this.btnOK.TabIndex = 1;
+      this.btnOK.Text = "&OK";
+      this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+      // 
+      // button1
+      // 
+      this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+      this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+      this.button1.Location = new System.Drawing.Point(326, 56);
+      this.button1.Name = "button1";
+      this.button1.Size = new System.Drawing.Size(64, 24);
+      this.button1.TabIndex = 2;
+      this.button1.Text = "&Cancel";
+      this.button1.Click += new System.EventHandler(this.button1_Click);
+      // 
+      // txtInput
+      // 
+      this.txtInput.Location = new System.Drawing.Point(8, 100);
+      this.txtInput.Name = "txtInput";
+      this.txtInput.Size = new System.Drawing.Size(379, 20);
+      this.txtInput.TabIndex = 0;
+      this.txtInput.Text = "";
+      // 
+      // InputBoxDialog
+      // 
+      this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
+      this.ClientSize = new System.Drawing.Size(398, 128);
+      this.Controls.Add(this.txtInput);
+      this.Controls.Add(this.button1);
+      this.Controls.Add(this.btnOK);
+      this.Controls.Add(this.lblPrompt);
+      this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+      this.MaximizeBox = false;
+      this.MinimizeBox = false;
+      this.Name = "InputBoxDialog";
+      this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+      this.Text = "InputBox";
+      this.Load += new System.EventHandler(this.InputBox_Load);
+      this.ResumeLayout(false);
+
+    }
+    #endregion
+
+    #region Private Variables
+    string formCaption = string.Empty;
+    string formPrompt = string.Empty;
+    string inputResponse = string.Empty;
+    string defaultValue = string.Empty;
+    #endregion
+
+    #region Public Properties
+    public string FormCaption
+    {
+      get { return formCaption; }
+      set { formCaption = value; }
+    } // property FormCaption
+    public string FormPrompt
+    {
+      get { return formPrompt; }
+      set { formPrompt = value; }
+    } // property FormPrompt
+    public string InputResponse
+    {
+      get { return inputResponse; }
+      set { inputResponse = value; }
+    } // property InputResponse
+    public string DefaultValue
+    {
+      get { return defaultValue; }
+      set { defaultValue = value; }
+    } // property DefaultValue
+
+    #endregion
+
+    #region Form and Control Events
+    private void InputBox_Load(object sender, System.EventArgs e)
+    {
+      this.txtInput.Text = defaultValue;
+      this.lblPrompt.Text = formPrompt;
+      this.Text = formCaption;
+      this.txtInput.SelectionStart = 0;
+      this.txtInput.SelectionLength = this.txtInput.Text.Length;
+      this.txtInput.Focus();
+    }
+
+
+    private void btnOK_Click(object sender, System.EventArgs e)
+    {
+      InputResponse = this.txtInput.Text;
+      this.Close();
+    }
+
+    private void button1_Click(object sender, System.EventArgs e)
+    {
+      this.Close();
+    }
+    #endregion
+
+  }
+
+  public class ListBoxDialog : System.Windows.Forms.Form
+  {
+    #region Windows Contols and Constructor
+
+    private System.Windows.Forms.Label lblPrompt;
+    private System.Windows.Forms.Button btn2OK;
+    private System.Windows.Forms.Button btn2Cnl;
+    private System.Windows.Forms.Button btn2Add;
+    private System.Windows.Forms.Button btn2Delete;
+    private System.Windows.Forms.ListBox listInput;
+    /// <summary>
+    /// Required designer variable.
+    /// 
+    private System.ComponentModel.Container components = null;
+
+    public ListBoxDialog()
+    {
+      InitializeComponent();
+      this.AcceptButton = btn2OK;
+      this.CancelButton = btn2Cnl;
+      this.AcceptButton = btn2Add;
+      this.AcceptButton = btn2Delete;
+    }
+
+    #region Dispose
+
+    /// <summary>
+    /// Clean up ay_nom resources being used.
+    /// 
+    protected override void Dispose(bool disposing)
+    {
+      if (disposing)
+      {
+        if (components != null)
+        {
+          components.Dispose();
+        }
+      }
+      base.Dispose(disposing);
+    }
+
+    #endregion
+
+    #region Windows Form Designer generated code
+    /// <summary>
+    /// Required method for Designer support - do not modify
+    /// the contents of this method with the code editor.
+    /// 
+    private void InitializeComponent()
+    {
+      this.lblPrompt = new System.Windows.Forms.Label();
+      this.btn2OK = new System.Windows.Forms.Button();
+      this.btn2Cnl = new System.Windows.Forms.Button();
+      this.btn2Add = new System.Windows.Forms.Button();
+      this.btn2Delete = new System.Windows.Forms.Button();
+      this.listInput = new System.Windows.Forms.ListBox();
+      this.SuspendLayout();
+      // 
+      // lblPrompt
+      // 
+      this.lblPrompt.Anchor =
+        ((System.Windows.Forms.AnchorStyles)
+        ((((System.Windows.Forms.AnchorStyles.Top |
+        System.Windows.Forms.AnchorStyles.Bottom)
+        | System.Windows.Forms.AnchorStyles.Left)
+        | System.Windows.Forms.AnchorStyles.Right)));
+      this.lblPrompt.BackColor = System.Drawing.SystemColors.Control;
+      this.lblPrompt.Font =
+        new System.Drawing.Font("Microsoft Sans Serif", 9.75F,
+        System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point,
+        ((System.Byte)(0)));
+      this.lblPrompt.Location = new System.Drawing.Point(12, 9);
+      this.lblPrompt.Name = "lblPrompt2";
+      this.lblPrompt.Size = new System.Drawing.Size(302, 82);
+      this.lblPrompt.TabIndex = 4;
+      // 
+      // btnOK
+      // 
+      this.btn2OK.DialogResult = System.Windows.Forms.DialogResult.OK;
+      this.btn2OK.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+      this.btn2OK.Location = new System.Drawing.Point(326, 24);
+      this.btn2OK.Name = "btnOK2";
+      this.btn2OK.Size = new System.Drawing.Size(64, 24);
+      this.btn2OK.TabIndex = 1;
+      this.btn2OK.Text = "&OK";
+      this.btn2OK.Click += new System.EventHandler(this.btn2OK_Click);
+      // 
+      // btnCnl
+      // 
+      this.btn2Cnl.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+      this.btn2Cnl.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+      this.btn2Cnl.Location = new System.Drawing.Point(326, 56);
+      this.btn2Cnl.Name = "button2";
+      this.btn2Cnl.Size = new System.Drawing.Size(64, 24);
+      this.btn2Cnl.TabIndex = 2;
+      this.btn2Cnl.Text = "&Cancel";
+      this.btn2Cnl.Click += new System.EventHandler(this.btn2Cnl_Click);
+      // 
+      // btnAdd
+      // 
+      this.btn2Add.DialogResult = System.Windows.Forms.DialogResult.Yes;
+      this.btn2Add.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+      this.btn2Add.Location = new System.Drawing.Point(400, 24);
+      this.btn2Add.Name = "btnAdd";
+      this.btn2Add.Size = new System.Drawing.Size(64, 24);
+      this.btn2Add.TabIndex = 3;
+      this.btn2Add.Text = "&Add";
+      this.btn2Add.Click += new System.EventHandler(this.btn2Add_Click);
+      // 
+      // btnDelete
+      // 
+      this.btn2Delete.DialogResult = System.Windows.Forms.DialogResult.Yes;
+      this.btn2Delete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+      this.btn2Delete.Location = new System.Drawing.Point(400, 56);
+      this.btn2Delete.Name = "btnDelete";
+      this.btn2Delete.Size = new System.Drawing.Size(64, 24);
+      this.btn2Delete.TabIndex = 4;
+      this.btn2Delete.Text = "&Delete";
+      this.btn2Delete.Click += new System.EventHandler(this.btn2Delete_Click);
+      // 
+      // listInput
+      // 
+      this.listInput.Location = new System.Drawing.Point(8, 100);
+      this.listInput.Name = "txtInput2";
+      this.listInput.Size = new System.Drawing.Size(379, 70);
+      this.listInput.TabIndex = 0;
+      this.listInput.Text = "";
+      // 
+      // ListBoxDialog
+      // 
+      this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
+      this.ClientSize = new System.Drawing.Size(475, 175);
+      this.Controls.Add(this.listInput);
+      this.Controls.Add(this.btn2Cnl);
+      this.Controls.Add(this.btn2OK);
+      this.Controls.Add(this.btn2Add);
+      this.Controls.Add(this.btn2Delete);
+      this.Controls.Add(this.lblPrompt);
+      this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+      this.MaximizeBox = false;
+      this.MinimizeBox = false;
+      this.Name = "ListBoxDialog";
+      this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+      this.Text = "InputBox";
+      this.Load += new EventHandler(ListBoxDialog_Load);
+      this.ResumeLayout(false);
+
+    }
+    #endregion
+
+    #region Private Variables
+    string formCaption = string.Empty;
+    string formPrompt = string.Empty;
+    int inputResponse = 0;
+    string defaultValue = string.Empty;
+    string[] t = new string[18];
+    bool old;
+    Electroimpact.TransformerInfo.cTool passedInTool;
+    #endregion
+
+    #region Public Properties
+
+    public string FormCaption
+    {
+      get { return formCaption; }
+      set { formCaption = value; }
+    } // property FormCaption
+    public string FormPrompt
+    {
+      get { return formPrompt; }
+      set { formPrompt = value; }
+    } // property FormPrompt
+    public int InputResponse
+    {
+      get { return inputResponse; }
+      set { inputResponse = value; }
+    } // property InputResponse
+    public string DefaultValue
+    {
+      get { return defaultValue; }
+      set { defaultValue = value; }
+    } // property DefaultValue
+    public Electroimpact.TransformerInfo.cTool PassedInTool
+    {
+      get { return passedInTool; }
+      set { passedInTool = value; }
+    } // property PassedInTool
+
+    #endregion
+
+    #region Form and Control Events
+    public void ListBoxDialog_Load(object sender, System.EventArgs e)
+    {
+      this.lblPrompt.Text = formPrompt;
+      this.Text = formCaption;
+      this.listInput.Focus();
+      List<TransformerInfo.cBarrelTransform> BarrelTrans = TransformerInfo.getListOfBarrelT();
+      int max = BarrelTrans.Count;
+      for (int i = 0; i < max; i++)
+      {
+        this.listInput.Items.Add("Mandrel Unit " + (i+1).ToString());
+        continue;
+      }
+      int S = passedInTool == null ? 1 : passedInTool.M38S;
+      this.listInput.SetSelected(S - 1, true);
+    }
+
+
+    private void btn2OK_Click(object sender, System.EventArgs e)
+    {
+      InputResponse = this.listInput.SelectedIndex;
+
+      this.Close();
+    }
+
+    private void btn2Cnl_Click(object sender, System.EventArgs e)
+    {
+      this.Close();
+    }
+
+    private void btn2Add_Click(object sender, System.EventArgs e)
+    {
+      TransformerInfo.cBarrelTransform Barrelnew = new TransformerInfo.cBarrelTransform();
+      List<TransformerInfo.cBarrelTransform> BarrelTrans = TransformerInfo.getListOfBarrelT();
+      BarrelTrans.Add(Barrelnew);
+      TransformerInfo.SaveListOfBarrelT(BarrelTrans);
+      this.Close();
+    }
+
+    private void btn2Delete_Click(object sender, System.EventArgs e)
+    {
+      List<TransformerInfo.cBarrelTransform> BarrelTrans = TransformerInfo.getListOfBarrelT();
+      int number = BarrelTrans.Count;
+      BarrelTrans.Remove(BarrelTrans[number-1]);
+      TransformerInfo.SaveListOfBarrelT(BarrelTrans);
+      this.Close();
+    }
+
+    #endregion
+
+    #endregion
+  }
+}
+#endregion

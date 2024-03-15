@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="BarrelTransformer">
+</Property><Property Name="Solution File" Value="D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer.sln">
+</Property><Property Name="User Options File" Value="D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer.suo">
+</Property><Property Name="Date" Value="Wednesday, November 28, 2012">
+</Property><Property Name="Time" Value="13:59 PM">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="BarrelTransformer.sln" Description="File successfully backed up as D:\Todd\Projects\dotNetSolutions\BarrelTransformer\Backup\BarrelTransformer.sln">
+</Event><Event ErrorLevel="0" Project="" Source="BarrelTransformer.suo" Description="File successfully backed up as D:\Todd\Projects\dotNetSolutions\BarrelTransformer\Backup\BarrelTransformer.suo">
+</Event><Event ErrorLevel="0" Project="BarrelTransformer" Source="BarrelTransformer\BarrelTransformer.csproj" Description="Project file successfully backed up as D:\Todd\Projects\dotNetSolutions\BarrelTransformer\Backup\BarrelTransformer\BarrelTransformer.csproj">
+</Event><Event ErrorLevel="0" Project="BarrelTransformer" Source="BarrelTransformer\frmBarrelTransformer.cs" Description="File successfully backed up as D:\Todd\Projects\dotNetSolutions\BarrelTransformer\Backup\BarrelTransformer\frmBarrelTransformer.cs">
+</Event><Event ErrorLevel="0" Project="BarrelTransformer" Source="BarrelTransformer\frmBarrelTransformer.Designer.cs" Description="File successfully backed up as D:\Todd\Projects\dotNetSolutions\BarrelTransformer\Backup\BarrelTransformer\frmBarrelTransformer.Designer.cs">
+</Event><Event ErrorLevel="0" Project="BarrelTransformer" Source="BarrelTransformer\Program.cs" Description="File successfully backed up as D:\Todd\Projects\dotNetSolutions\BarrelTransformer\Backup\BarrelTransformer\Program.cs">
+</Event><Event ErrorLevel="0" Project="BarrelTransformer" Source="BarrelTransformer\Properties\AssemblyInfo.cs" Description="File successfully backed up as D:\Todd\Projects\dotNetSolutions\BarrelTransformer\Backup\BarrelTransformer\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="BarrelTransformer" Source="BarrelTransformer\Properties\Resources.Designer.cs" Description="File successfully backed up as D:\Todd\Projects\dotNetSolutions\BarrelTransformer\Backup\BarrelTransformer\Properties\Resources.Designer.cs">
+</Event><Event ErrorLevel="0" Project="BarrelTransformer" Source="BarrelTransformer\Properties\Settings.Designer.cs" Description="File successfully backed up as D:\Todd\Projects\dotNetSolutions\BarrelTransformer\Backup\BarrelTransformer\Properties\Settings.Designer.cs">
+</Event><Event ErrorLevel="0" Project="BarrelTransformer" Source="BarrelTransformer\app.config" Description="File successfully backed up as D:\Todd\Projects\dotNetSolutions\BarrelTransformer\Backup\BarrelTransformer\app.config">
+</Event><Event ErrorLevel="0" Project="BarrelTransformer" Source="BarrelTransformer\Properties\Settings.settings" Description="File successfully backed up as D:\Todd\Projects\dotNetSolutions\BarrelTransformer\Backup\BarrelTransformer\Properties\Settings.settings">
+</Event><Event ErrorLevel="0" Project="BarrelTransformer" Source="BarrelTransformer\frmBarrelTransformer.resx" Description="File successfully backed up as D:\Todd\Projects\dotNetSolutions\BarrelTransformer\Backup\BarrelTransformer\frmBarrelTransformer.resx">
+</Event><Event ErrorLevel="0" Project="BarrelTransformer" Source="BarrelTransformer\Properties\Resources.resx" Description="File successfully backed up as D:\Todd\Projects\dotNetSolutions\BarrelTransformer\Backup\BarrelTransformer\Properties\Resources.resx">
+</Event><Event ErrorLevel="0" Project="BarrelTransformer" Source="BarrelTransformer\BarrelTransformer.csproj" Description="The project file does not require conversion.">
+</Event><Event ErrorLevel="3" Project="BarrelTransformer" Source="BarrelTransformer\BarrelTransformer.csproj" Description="No Conversion Required">
+</Event><Event ErrorLevel="1" Project="LinearAlgebra" Source="..\LinearAlgebra\LinearAlgebra.csproj" Description="Warning: The project file is being backed up to a relative path that differs from the original solution relative path.  The difference in folder hierarchy may create problems in opening or building the backed up solution and project.">
+</Event><Event ErrorLevel="0" Project="LinearAlgebra" Source="..\LinearAlgebra\LinearAlgebra.csproj" Description="Project file successfully backed up as D:\Todd\Projects\dotNetSolutions\BarrelTransformer\Backup\LinearAlgebra\LinearAlgebra.csproj">
+</Event><Event ErrorLevel="0" Project="LinearAlgebra" Source="..\LinearAlgebra\cLinearAlgebra.cs" Description="File successfully backed up as D:\Todd\Projects\dotNetSolutions\BarrelTransformer\Backup\LinearAlgebra\cLinearAlgebra.cs">
+</Event><Event ErrorLevel="0" Project="LinearAlgebra" Source="..\LinearAlgebra\IMachine.cs" Description="File successfully backed up as D:\Todd\Projects\dotNetSolutions\BarrelTransformer\Backup\LinearAlgebra\IMachine.cs">
+</Event><Event ErrorLevel="0" Project="LinearAlgebra" Source="..\LinearAlgebra\LinearAlgebra.csproj" Description="The project file does not require conversion.">
+</Event><Event ErrorLevel="3" Project="LinearAlgebra" Source="..\LinearAlgebra\LinearAlgebra.csproj" Description="No Conversion Required">
+</Event><Event ErrorLevel="0" Project="BarrelFunctions" Source="BarrelFunctions\BarrelFunctions.csproj" Description="Project file successfully backed up as D:\Todd\Projects\dotNetSolutions\BarrelTransformer\Backup\BarrelFunctions\BarrelFunctions.csproj">
+</Event><Event ErrorLevel="0" Project="BarrelFunctions" Source="BarrelFunctions\cBarrelFunctions.cs" Description="File successfully backed up as D:\Todd\Projects\dotNetSolutions\BarrelTransformer\Backup\BarrelFunctions\cBarrelFunctions.cs">
+</Event><Event ErrorLevel="0" Project="BarrelFunctions" Source="BarrelFunctions\BarrelFunctions.csproj" Description="The project file does not require conversion.">
+</Event><Event ErrorLevel="3" Project="BarrelFunctions" Source="BarrelFunctions\BarrelFunctions.csproj" Description="No Conversion Required">
+</Event><Event ErrorLevel="0" Project="" Source="BarrelTransformer.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="BarrelTransformer.sln" Description="Converted">
+</Event></UpgradeLog>

@@ -1,0 +1,419 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LaserClasses</name>
+    </assembly>
+    <members>
+        <!-- Badly formed XML comment ignored for member "M:Electroimpact.LaserClasses.SpiritInspectionData.cRawInspectionData.ReadSpiritFilesAndMakeCGTechObject(System.Collections.Generic.List{System.String},System.String,System.ComponentModel.BackgroundWorker)" -->
+        <member name="M:Electroimpact.LaserClasses.SpiritInspectionData.cInspectionSequences.FinishHookingMeUp">
+            <summary>
+            Currently calling this method is not necessary.  However if you ever want to get something out of the private sorted dictionary in this class and the one out 
+            of the Sequence Class, then you will need to call this.
+            </summary>
+        </member>
+        <member name="M:Electroimpact.LaserClasses.SpiritInspectionData.cInspectionSequences.GetSequence(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="SequenceName">a string the format is Seq_020 for sequence 20.  </param>
+            <returns></returns>
+        </member>
+        <member name="T:Electroimpact.LaserClasses.SpiritInspectionData.cInspectionSequences.cInspectionSequence">
+            <summary>
+            This thing will contain all of the rotations required for this particular sequence.
+            </summary>
+        </member>
+        <member name="M:Electroimpact.LaserClasses.SpiritInspectionData.cInspectionSequences.cPlyType.ApplyBarrelTransform(Electroimpact.cBarrelFunctions,Electroimpact.LaserClasses.SpiritInspectionData.cLaserDataInformation,System.Double,System.Double)">
+            <summary>
+            Be very carefull to modify only copies of this class or you'll be sorry.
+            </summary>
+            <param name="barrel_functions"></param>
+        </member>
+        <member name="M:Electroimpact.LaserClasses.SpiritInspectionData.cInspectionSequences.cPlyType.ProduceTextFile(Electroimpact.FileIO.cFileWriter)">
+            <summary>
+            Be very carefull to modify only copies of this class or you'll be sorry.
+            </summary>
+            <param name="barrel_functions"></param>
+        </member>
+        <member name="M:Electroimpact.LaserClasses.SpiritInspectionData.cLaserDataInformation.AirplaneToBarrel(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            angular dimensions are in degrees
+            </summary>
+            <param name="X"></param>
+            <param name="Y"></param>
+            <param name="Z"></param>
+            <param name="rX"></param>
+            <param name="rY"></param>
+            <param name="rZ"></param>
+            <returns></returns>
+        </member>
+        <member name="F:Electroimpact.LaserClasses.SpiritInspectionData.cLaserDataInformation.cXformArguments.X">
+            <summary>
+            these are going to be in inches and degrees
+            </summary>
+        </member>
+        <member name="F:Electroimpact.LaserClasses.SpiritInspectionData.cLaserDataInformation.cXformArguments.Y">
+            <summary>
+            these are going to be in inches and degrees
+            </summary>
+        </member>
+        <member name="F:Electroimpact.LaserClasses.SpiritInspectionData.cLaserDataInformation.cXformArguments.Z">
+            <summary>
+            these are going to be in inches and degrees
+            </summary>
+        </member>
+        <member name="F:Electroimpact.LaserClasses.SpiritInspectionData.cLaserDataInformation.cXformArguments.rX">
+            <summary>
+            these are going to be in inches and degrees
+            </summary>
+        </member>
+        <member name="F:Electroimpact.LaserClasses.SpiritInspectionData.cLaserDataInformation.cXformArguments.rY">
+            <summary>
+            these are going to be in inches and degrees
+            </summary>
+        </member>
+        <member name="F:Electroimpact.LaserClasses.SpiritInspectionData.cLaserDataInformation.cXformArguments.rZ">
+            <summary>
+            these are going to be in inches and degrees
+            </summary>
+        </member>
+        <member name="T:Electroimpact.LaserClasses.LPT.cKinstonInspection">
+            <remarks/>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.LPT.cKinstonInspection.PART">
+            <remarks/>
+        </member>
+        <member name="T:Electroimpact.LaserClasses.LPT.XMLPART">
+            <remarks/>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.LPT.XMLPART.PLY">
+            <remarks/>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.LPT.XMLPART.NAME">
+            <remarks/>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.LPT.XMLPART.STATUS">
+            <remarks/>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.LPT.XMLPART.TOPLAYERS">
+            <remarks/>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.LPT.XMLPART.FILEDATE">
+            <remarks/>
+        </member>
+        <member name="T:Electroimpact.LaserClasses.LPT.XMLPARTPLY">
+            <remarks/>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.LPT.XMLPARTPLY.PLY">
+            <remarks/>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.LPT.XMLPARTPLY.POINT">
+            <remarks/>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.LPT.XMLPARTPLY.NAME">
+            <remarks/>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.LPT.XMLPARTPLY.NOTES">
+            <remarks/>
+        </member>
+        <member name="T:Electroimpact.LaserClasses.LPT.XMLPARTPLYPLY">
+            <remarks/>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.LPT.XMLPARTPLYPLY.PLY">
+            <remarks/>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.LPT.XMLPARTPLYPLY.POINT">
+            <remarks/>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.LPT.XMLPARTPLYPLY.NAME">
+            <remarks/>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.LPT.XMLPARTPLYPLY.NOTES">
+            <remarks/>
+        </member>
+        <member name="T:Electroimpact.LaserClasses.LPT.XMLPARTPLYPLYPLY">
+            <remarks/>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.LPT.XMLPARTPLYPLYPLY.POINT">
+            <remarks/>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.LPT.XMLPARTPLYPLYPLY.NAME">
+            <remarks/>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.LPT.XMLPARTPLYPLYPLY.SEQUENCE">
+            <remarks/>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.LPT.XMLPARTPLYPLYPLY.MATERIAL">
+            <remarks/>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.LPT.XMLPARTPLYPLYPLY.MATERIALSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.LPT.XMLPARTPLYPLYPLY.ORIENTATION">
+            <remarks/>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.LPT.XMLPARTPLYPLYPLY.ORIENTATIONSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.LPT.XMLPARTPLYPLYPLY.ROSETTE">
+            <remarks/>
+        </member>
+        <member name="T:Electroimpact.LaserClasses.LPT.XMLPARTPLYPLYPLYPOINT">
+            <remarks/>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.LPT.XMLPARTPLYPLYPLYPOINT.NUMBER">
+            <remarks/>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.LPT.XMLPARTPLYPLYPLYPOINT.XVAL">
+            <remarks/>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.LPT.XMLPARTPLYPLYPLYPOINT.YVAL">
+            <remarks/>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.LPT.XMLPARTPLYPLYPLYPOINT.ZVAL">
+            <remarks/>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.LPT.XMLPARTPLYPLYPLYPOINT.IVAL">
+            <remarks/>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.LPT.XMLPARTPLYPLYPLYPOINT.JVAL">
+            <remarks/>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.LPT.XMLPARTPLYPLYPLYPOINT.KVAL">
+            <remarks/>
+        </member>
+        <member name="T:Electroimpact.LaserClasses.LPT.XMLPARTPLYPLYPOINT">
+            <remarks/>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.LPT.XMLPARTPLYPLYPOINT.NUMBER">
+            <remarks/>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.LPT.XMLPARTPLYPLYPOINT.XVAL">
+            <remarks/>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.LPT.XMLPARTPLYPLYPOINT.YVAL">
+            <remarks/>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.LPT.XMLPARTPLYPLYPOINT.ZVAL">
+            <remarks/>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.LPT.XMLPARTPLYPLYPOINT.IVAL">
+            <remarks/>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.LPT.XMLPARTPLYPLYPOINT.JVAL">
+            <remarks/>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.LPT.XMLPARTPLYPLYPOINT.KVAL">
+            <remarks/>
+        </member>
+        <member name="T:Electroimpact.LaserClasses.LPT.XMLPARTPLYPOINT">
+            <remarks/>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.LPT.XMLPARTPLYPOINT.NUMBER">
+            <remarks/>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.LPT.XMLPARTPLYPOINT.XVAL">
+            <remarks/>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.LPT.XMLPARTPLYPOINT.YVAL">
+            <remarks/>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.LPT.XMLPARTPLYPOINT.ZVAL">
+            <remarks/>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.LPT.XMLPARTPLYPOINT.IVAL">
+            <remarks/>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.LPT.XMLPARTPLYPOINT.JVAL">
+            <remarks/>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.LPT.XMLPARTPLYPOINT.KVAL">
+            <remarks/>
+        </member>
+        <member name="F:Electroimpact.LaserClasses.AssemblyGuidance.cLaserConfiguration.LaserProjectorPartFileLocation">
+            <summary>
+            FRS Part File
+            </summary>
+        </member>
+        <member name="F:Electroimpact.LaserClasses.AssemblyGuidance.cLaserConfiguration.LaserProjectorPartToFindFileLocation">
+            <summary>
+            Part probing part file
+            </summary>
+        </member>
+        <member name="F:Electroimpact.LaserClasses.AssemblyGuidance.cLaserConfiguration.LaserProjectStandalonePartFileLocation">
+            <summary>
+            Standalone laser part file
+            </summary>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.AssemblyGuidance.cTarget.DistFromProjector">
+            <summary>
+            the distance in inches
+            </summary>
+        </member>
+        <member name="F:Electroimpact.LaserClasses.AssemblyGuidance.cLaser.matrixUpdateRequired">
+            <summary>
+            for use from an external program that monitors this bool
+            </summary>
+        </member>
+        <member name="M:Electroimpact.LaserClasses.AssemblyGuidance.cLaser.ReformatTargetFile(System.String,System.String)">
+            <summary>
+            I have lost track of what this does.  It is incompatible with dll ver 3.4 and later.  
+            </summary>
+            <param name="TargetFile"></param>
+            <param name="OutputFileName"></param>
+        </member>
+        <member name="M:Electroimpact.LaserClasses.AssemblyGuidance.cLaser.GenerateTemporaryProjectionFileName(System.String)">
+            <summary>
+            Adds .temp before the last '.'
+            </summary>
+            <param name="p"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Electroimpact.LaserClasses.AssemblyGuidance.cLaser.GenerateTargetFileName_AGS_format(System.String)">
+            <summary>
+            this is the regular bone-stock ags target file
+            </summary>
+            <param name="PartFile"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Electroimpact.LaserClasses.AssemblyGuidance.cLaser.GenerateTargetFileName_EI_format(System.String)">
+            <summary>
+            this is the file that is passed into register and project.  it is drived from GenerateTargetFileName_AGS_format
+            </summary>
+            <param name="PartFile"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Electroimpact.LaserClasses.AssemblyGuidance.cLaser.GenerateTargetFileName_sdk_EI_format(System.String)">
+            <summary>
+            This is the file returned from the register command...it is written by the sdk.  Typically this will be copied over GenerateTargetFileName_AGS_format after
+            registration is complete.
+            </summary>
+            <param name="PartFile"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Electroimpact.LaserClasses.AssemblyGuidance.cLaser.GenerateTransformFileName_AGS_format(System.String)">
+            <summary>
+            this is the bone-stock transform file.  it is used in registration and projection.
+            </summary>
+            <param name="PartFile"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Electroimpact.LaserClasses.AssemblyGuidance.cLaser.GenerateTransformFileName_AGS_sdk_format(System.String)">
+            <summary>
+            this file is returned as a result of registration. it is typically copied over GenerateTransformFileName_AGS_format after registration is performed.
+            </summary>
+            <param name="PartFile"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Electroimpact.LaserClasses.AssemblyGuidance.cLaser.WriteOutRegistrationInBytes(System.String,Electroimpact.LinearAlgebra.c6dof)">
+            <summary>
+            Converts a standard Electroimpact 6DOF into a byte by byte AGS byte-by-byte style registration file.
+            </summary>
+            <param name="FileName">The name of the current registration file</param>
+            <param name="Location">standard Electroimpact 6DOF Transform</param>
+        </member>
+        <member name="M:Electroimpact.LaserClasses.AssemblyGuidance.cLaser.WriteOutRegistration(System.String,Electroimpact.LinearAlgebra.c6dof)">
+            <summary>
+            Writes out the registration in readable matrix form.  3x3 orientation followed by a row which is the position offset vector.
+            </summary>
+            <param name="FileName"></param>
+            <param name="Location"></param>
+        </member>
+        <member name="M:Electroimpact.LaserClasses.AssemblyGuidance.cLaser.ReadRegistrationFileInBytes(System.String,System.Int32)">
+            <summary>
+            Read an AGS stylte byte-by-byte registration file.
+            </summary>
+            <param name="RegistrationFileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Electroimpact.LaserClasses.AssemblyGuidance.cLaser.ReadRegistrationFile(System.String)">
+            <summary>
+            Parses the ASG registration file yielding a Electroimpact 6DOF matrix
+            </summary>
+            <param name="RegistrationFileName">Just the good old registration filename</param>
+        </member>
+        <member name="M:Electroimpact.LaserClasses.AssemblyGuidance.cLaser.BuildLaserOutputData(System.Collections.Generic.List{Electroimpact.LaserClasses.Geometry.cPolyLine})">
+            <summary>
+            super simple builder.
+            </summary>
+            <param name="plines"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Electroimpact.LaserClasses.AssemblyGuidance.cLaser.BuildLaserOutputData(System.Collections.Generic.List{Electroimpact.LaserClasses.Geometry.cPolyLine},Electroimpact.LaserClasses.AssemblyGuidance.cLaser,System.Double[0:,0:],Electroimpact.LaserClasses.AssemblyGuidance.cLaserConfiguration)">
+            <summary>
+            Read in some Polylines in part coordinates, convert them to FRC_Polylines, further convert them to projector coordinates...accounting for projector displacement.
+            Also, verifies that the projection is within range and on the side of the part that is useful.
+            </summary>
+            <param name="PolyLines"></param>
+            <param name="alaser"></param>
+            <param name="PartToFRCTransformMatrix"></param>
+            <param name="LaserConfiguration"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Electroimpact.LaserClasses.AssemblyGuidance.cLaser.ProcessRxRy">
+            <summary>
+            rx is first rotation in degrees (actually about z)
+            ry is second rotation in degrees (actually about x)
+            
+            wierd, but keeps it straight with ags notation.
+            </summary>
+            <param name="rx"></param>
+            <param name="ry"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Electroimpact.LaserClasses.AssemblyGuidance.cLaser.cLaserConnectionDetails.ProjectPattern(System.String,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="ProjectionFileName"></param>
+            <param name="updateRate">Valid range: 75-150 inclusive</param>
+            <returns></returns>
+        </member>
+        <member name="M:Electroimpact.LaserClasses.AssemblyGuidance.cLaser.cLaserConnectionDetails.Register(System.String,System.String,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="o_targetfile">name of the file containing the target data</param>
+            <param name="i_transformfile">name of the file containing transform data..</param>
+            <param name="scan_targets">scan the targets, or just use the laser steer values</param>
+            <param name="use_steer_angles_in_steer_file"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Electroimpact.LaserClasses.AssemblyGuidance.cLaser.cLaserConnectionDetails.GetFOM(System.String)">
+            <summary>
+            returns the laser figure of merit.  
+            filename can be null.
+            returns the string data regardless, if a filename is possible, it is populated with the data.
+            </summary>
+            <param name="filename"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.AssemblyGuidance.cLaser.cLaserConnectionDetails.dllver">
+            <summary>
+            this thing returns a 3 long integer array.  major, minor and build in elements 0, 1, 2 respectively.
+            </summary>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.AssemblyGuidance.cLaser.cLaserConnectionDetails.dllv3_4_or_later">
+            <summary>
+            The file system changed at 3.4.  since we are supporting a lower version all over the place, I added this thing.
+            </summary>
+        </member>
+        <member name="P:Electroimpact.LaserClasses.AssemblyGuidance.cLaser.cLaserConnectionDetails.LaserReference">
+            <summary>
+            Gets and Sets the internal laser guide object reference
+            </summary>
+        </member>
+        <member name="M:Electroimpact.LaserClasses.Geometry.cLaserData.TransformMe(System.Double[0:,0:])">
+            <summary>
+            pass in the transform that you want me to transform myself by.
+            </summary>
+            <param name="p">4x4 matrix</param>
+        </member>
+        <member name="M:Electroimpact.LaserClasses.Geometry.cPly.GetPolyLines(System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Gets the four objects used for inspection projections  Boundaries, Orientations, Tooling and Cutouts.
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

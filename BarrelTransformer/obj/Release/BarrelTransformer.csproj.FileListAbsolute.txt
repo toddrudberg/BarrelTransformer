@@ -1,0 +1,92 @@
+C:\Users\Public\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\BarrelTransformer.exe.config
+C:\Users\Public\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Public\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Release\Transformer.frmBarrelTransformer.resources
+C:\Users\Public\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Release\BarrelTransformer.Properties.Resources.resources
+C:\Users\Public\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Release\BarrelTransformer.csproj.GenerateResource.Cache
+C:\Users\Public\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\IMachine.cs
+C:\Users\Public\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\BarrelTransformer.exe
+C:\Users\Public\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\BarrelTransformer.pdb
+C:\Users\Public\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\LinearAlgebra.dll
+C:\Users\Public\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\OpenCNCDll.dll
+C:\Users\Public\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\SolverSDKNet20.dll
+C:\Users\Public\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\ClassStringCalc.dll
+C:\Users\Public\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\LinearAlgebra.pdb
+C:\Users\Public\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\SolverSDKNet20.xml
+C:\Users\Public\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Release\BarrelTransformer.exe
+C:\Users\Public\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Release\BarrelTransformer.pdb
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\BarrelTransformer.exe.config
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Release\BarrelTransformer.exe
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Release\BarrelTransformer.pdb
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\IMachine.cs
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\BarrelTransformer.exe
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\BarrelTransformer.pdb
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\BarrelFunctions.dll
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\LinearAlgebra.dll
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\OpenCNCDll.dll
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\ClassStringCalc.dll
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\LinearAlgebra.pdb
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\BarrelFunctions.pdb
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\SolverSDKNet20.xml
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Release\ResolveAssemblyReference.cache
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Release\Transformer.frmBarrelTransformer.resources
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Release\BarrelTransformer.Properties.Resources.resources
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Release\BarrelTransformer.csproj.GenerateResource.Cache
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\BarrelTransformer.exe.config
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Release\BarrelTransformer.exe
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Release\BarrelTransformer.pdb
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Release\ResolveAssemblyReference.cache
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Release\Transformer.frmBarrelTransformer.resources
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Release\BarrelTransformer.Properties.Resources.resources
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Release\BarrelTransformer.csproj.GenerateResource.Cache
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\IMachine.cs
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\BarrelTransformer.exe
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\BarrelTransformer.pdb
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\BarrelFunctions.dll
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\LinearAlgebra.dll
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\OpenCNCDll.dll
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\ClassStringCalc.dll
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\LinearAlgebra.pdb
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\BarrelFunctions.pdb
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\SolverSDKNet20.xml
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\BarrelTransformer.exe.config
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\BarrelTransformer.exe
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\BarrelTransformer.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\BarrelFunctions.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\LinearAlgebra.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\TransformerInfo.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\ClassStringCalc.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\xmlSerializer.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\BarrelFunctions.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\BarrelFunctions.xml
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\LinearAlgebra.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\LinearAlgebra.xml
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\ClassStringCalc.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\ClassStringCalc.xml
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Release\BarrelTransformer.csprojResolveAssemblyReference.cache
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Release\Transformer.frmBarrelTransformer.resources
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Release\BarrelTransformer.Properties.Resources.resources
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Release\BarrelTransformer.csproj.GenerateResource.Cache
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Release\BarrelTransformer.exe
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Release\BarrelTransformer.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelTransformer\obj\Release\BarrelTransformer.csprojResolveAssemblyReference.cache
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelTransformer\obj\Release\Transformer.frmBarrelTransformer.resources
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelTransformer\obj\Release\BarrelTransformer.Properties.Resources.resources
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelTransformer\obj\Release\BarrelTransformer.csproj.GenerateResource.Cache
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelTransformer\bin\Release\BarrelTransformer.exe.config
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelTransformer\bin\Release\BarrelTransformer.exe
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelTransformer\bin\Release\BarrelTransformer.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelTransformer\bin\Release\BarrelFunctions.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelTransformer\bin\Release\LinearAlgebra.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelTransformer\bin\Release\TransformerInfo.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelTransformer\bin\Release\ClassStringCalc.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelTransformer\bin\Release\xmlSerializer.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelTransformer\bin\Release\BarrelFunctions.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelTransformer\bin\Release\BarrelFunctions.xml
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelTransformer\bin\Release\LinearAlgebra.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelTransformer\bin\Release\ClassStringCalc.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelTransformer\bin\Release\ClassStringCalc.xml
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelTransformer\obj\Release\BarrelTransformer.exe
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelTransformer\obj\Release\BarrelTransformer.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelTransformer\bin\Release\IMachine.cs
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\xmlSerializer.pdb
+D:\todd\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Release\SimplexSearch.dll

@@ -1,0 +1,191 @@
+C:\Users\Public\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\BarrelTransformer.exe.config
+C:\Users\Public\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Public\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Debug\Transformer.frmBarrelTransformer.resources
+C:\Users\Public\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Debug\BarrelTransformer.Properties.Resources.resources
+C:\Users\Public\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Debug\BarrelTransformer.csproj.GenerateResource.Cache
+C:\Users\Public\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\IMachine.cs
+C:\Users\Public\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\BarrelTransformer.exe
+C:\Users\Public\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\BarrelTransformer.pdb
+C:\Users\Public\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\LinearAlgebra.dll
+C:\Users\Public\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\OpenCNCDll.dll
+C:\Users\Public\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\SolverSDKNet20.dll
+C:\Users\Public\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\ClassStringCalc.dll
+C:\Users\Public\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\csString.pdb
+C:\Users\Public\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\LinearAlgebra.pdb
+C:\Users\Public\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\LinearAlgebra.xml
+C:\Users\Public\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\SolverSDKNet20.xml
+C:\Users\Public\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\FileIO.pdb
+C:\Users\Public\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Debug\BarrelTransformer.exe
+C:\Users\Public\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Debug\BarrelTransformer.pdb
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\BarrelTransformer.exe.config
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Debug\BarrelTransformer.exe
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Debug\BarrelTransformer.pdb
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\IMachine.cs
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\BarrelTransformer.exe
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\BarrelTransformer.pdb
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\LinearAlgebra.dll
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\OpenCNCDll.dll
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\ClassStringCalc.dll
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\csString.pdb
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\LinearAlgebra.pdb
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\LinearAlgebra.xml
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\SolverSDKNet20.xml
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\FileIO.pdb
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Debug\Transformer.frmBarrelTransformer.resources
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Debug\BarrelTransformer.Properties.Resources.resources
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Debug\BarrelTransformer.csproj.GenerateResource.Cache
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\BarrelFunctions.dll
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\BarrelFunctions.pdb
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\IMachine.cs
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\BarrelTransformer.exe.config
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\BarrelTransformer.exe
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\BarrelTransformer.pdb
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\BarrelFunctions.dll
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\LinearAlgebra.dll
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\OpenCNCDll.dll
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\ClassStringCalc.dll
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\LinearAlgebra.pdb
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\LinearAlgebra.xml
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\BarrelFunctions.pdb
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\SolverSDKNet20.xml
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Debug\Transformer.frmBarrelTransformer.resources
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Debug\BarrelTransformer.Properties.Resources.resources
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Debug\BarrelTransformer.csproj.GenerateResource.Cache
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Debug\BarrelTransformer.exe
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Debug\BarrelTransformer.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelTransformer\bin\Debug\BarrelTransformer.exe.config
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelTransformer\bin\Debug\BarrelTransformer.exe
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelTransformer\bin\Debug\BarrelTransformer.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelTransformer\bin\Debug\BarrelFunctions.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelTransformer\bin\Debug\LinearAlgebra.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelTransformer\bin\Debug\TransformerInfo.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelTransformer\bin\Debug\ClassStringCalc.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelTransformer\bin\Debug\xmlSerializer.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelTransformer\bin\Debug\LinearAlgebra.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelTransformer\bin\Debug\LinearAlgebra.xml
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelTransformer\bin\Debug\BarrelFunctions.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelTransformer\bin\Debug\ClassStringCalc.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelTransformer\bin\Debug\ClassStringCalc.xml
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelTransformer\obj\Debug\BarrelTransformer.csprojResolveAssemblyReference.cache
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelTransformer\obj\Debug\Transformer.frmBarrelTransformer.resources
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelTransformer\obj\Debug\BarrelTransformer.Properties.Resources.resources
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelTransformer\obj\Debug\BarrelTransformer.csproj.GenerateResource.Cache
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelTransformer\obj\Debug\BarrelTransformer.exe
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelTransformer\obj\Debug\BarrelTransformer.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelTransformer\bin\Debug\xmlSerializer.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelTransformer\bin\Debug\BarrelFunctions.xml
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\BarrelTransformer.exe.config
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\BarrelTransformer.exe
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\BarrelTransformer.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\BarrelFunctions.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\LinearAlgebra.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\TransformerInfo.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\xmlSerializer.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\BarrelFunctions.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\BarrelFunctions.xml
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\LinearAlgebra.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\LinearAlgebra.xml
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\xmlSerializer.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Debug\BarrelTransformer.csprojResolveAssemblyReference.cache
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Debug\Transformer.frmBarrelTransformer.resources
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Debug\BarrelTransformer.Properties.Resources.resources
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Debug\BarrelTransformer.csproj.GenerateResource.Cache
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Debug\BarrelTransformer.exe
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Debug\BarrelTransformer.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\SimplexSearch.dll
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\BarrelTransformer.exe.config
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Debug\BarrelTransformer.exe
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Debug\BarrelTransformer.pdb
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\BarrelTransformer.exe.config
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\BarrelTransformer.exe
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\BarrelTransformer.pdb
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\BarrelFunctions.dll
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\cncSiemens.dll
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\CommonFiles.dll
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\csString.dll
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\FileIO.dll
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\ICnc.dll
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\LinearAlgebra.dll
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\OpenCNCDll.dll
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\SimplexSearch.dll
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\TransformerInfo.dll
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\xmlSerializer.dll
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\NDde.dll
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\passwordProtection.dll
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\LaserClasses.dll
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\settingsFormBuilder.dll
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\cncFanuc.dll
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\FileParser.dll
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\Interop.LaserGuide.dll
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\BarrelFunctions.pdb
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\BarrelFunctions.xml
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\cncSiemens.pdb
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\CommonFiles.pdb
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\ICnc.pdb
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\LinearAlgebra.pdb
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\LinearAlgebra.xml
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\xmlSerializer.xml
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\NDde.pdb
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\NDde.xml
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\passwordProtection.pdb
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\LaserClasses.pdb
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\LaserClasses.xml
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\settingsFormBuilder.xml
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\cncFanuc.pdb
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\FileParser.xml
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Debug\BarrelTransformer.csprojResolveAssemblyReference.cache
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Debug\Electroimpact.Transformer.frmBarrelTransformer.resources
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Debug\BarrelTransformer.Properties.Resources.resources
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Debug\BarrelTransformer.csproj.GenerateResource.Cache
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Debug\BarrelTransformer.exe
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Debug\BarrelTransformer.pdb
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\BarrelTransformer.exe
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\BarrelTransformer.pdb
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\BarrelFunctions.dll
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\CommonFiles.dll
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\csString.dll
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\FileIO.dll
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\ICnc.dll
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\LinearAlgebra.dll
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\OpenCNCDll.dll
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\SimplexSearch.dll
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\TransformerInfo.dll
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\xmlSerializer.dll
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\passwordProtection.dll
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\LaserClasses.dll
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\settingsFormBuilder.dll
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\cncFanuc.dll
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\FileParser.dll
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\Interop.LaserGuide.dll
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\BarrelFunctions.pdb
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\BarrelFunctions.xml
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\CommonFiles.pdb
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\ICnc.pdb
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\LinearAlgebra.pdb
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\LinearAlgebra.xml
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\xmlSerializer.xml
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\passwordProtection.pdb
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\LaserClasses.pdb
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\LaserClasses.xml
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\settingsFormBuilder.xml
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\cncFanuc.pdb
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\FileParser.xml
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Debug\Electroimpact.Transformer.frmBarrelTransformer.resources
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Debug\BarrelTransformer.Properties.Resources.resources
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Debug\BarrelTransformer.csproj.GenerateResource.Cache
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\ClassStringCalc.dll
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\Electroimpact.XmlSerializer.dll
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\TransformerInfo.pdb
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\ClassStringCalc.pdb
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\ClassStringCalc.xml
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\csString.pdb
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\Electroimpact.XmlSerializer.pdb
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\Electroimpact.XmlSerializer.xml
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\FileIO.pdb
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\OpenCNCDll.dll.config
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\bin\Debug\SimplexSearch.pdb
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Debug\BarrelTransformer.csprojAssemblyReference.cache
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Debug\BarrelTransformer.csproj.CoreCompileInputs.cache
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelTransformer\obj\Debug\BarrelTransformer.csproj.CopyComplete

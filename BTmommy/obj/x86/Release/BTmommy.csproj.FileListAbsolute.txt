@@ -1,0 +1,50 @@
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BTmommy\bin\Release\BTmommy.exe.config
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BTmommy\bin\Release\BTmommy.exe
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BTmommy\bin\Release\BTmommy.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BTmommy\bin\Release\BarrelTransformer.exe
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BTmommy\bin\Release\FileIO.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BTmommy\bin\Release\BarrelFunctions.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BTmommy\bin\Release\LinearAlgebra.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BTmommy\bin\Release\TransformerInfo.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BTmommy\bin\Release\csString.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BTmommy\bin\Release\ClassStringCalc.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BTmommy\bin\Release\xmlSerializer.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BTmommy\bin\Release\BarrelTransformer.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BTmommy\bin\Release\BarrelFunctions.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BTmommy\bin\Release\BarrelFunctions.xml
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BTmommy\bin\Release\LinearAlgebra.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BTmommy\bin\Release\LinearAlgebra.xml
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BTmommy\bin\Release\ClassStringCalc.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BTmommy\bin\Release\ClassStringCalc.xml
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BTmommy\obj\x86\Release\BTmommy.csprojResolveAssemblyReference.cache
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BTmommy\obj\x86\Release\BTmommy.frmMommy.resources
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BTmommy\obj\x86\Release\BTmommy.Properties.Resources.resources
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BTmommy\obj\x86\Release\BTmommy.csproj.GenerateResource.Cache
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BTmommy\obj\x86\Release\BTmommy.exe
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BTmommy\obj\x86\Release\BTmommy.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BTmommy\obj\x86\Release\BTmommy.frmMommy.resources
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BTmommy\obj\x86\Release\BTmommy.Properties.Resources.resources
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BTmommy\obj\x86\Release\BTmommy.csproj.GenerateResource.Cache
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BTmommy\bin\Release\BTmommy.exe.config
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BTmommy\bin\Release\BTmommy.exe
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BTmommy\bin\Release\BTmommy.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BTmommy\bin\Release\BarrelTransformer.exe
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BTmommy\bin\Release\FileIO.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BTmommy\bin\Release\BarrelFunctions.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BTmommy\bin\Release\LinearAlgebra.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BTmommy\bin\Release\TransformerInfo.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BTmommy\bin\Release\csString.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BTmommy\bin\Release\ClassStringCalc.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BTmommy\bin\Release\xmlSerializer.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BTmommy\bin\Release\BarrelTransformer.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BTmommy\bin\Release\FileIO.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BTmommy\bin\Release\BarrelFunctions.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BTmommy\bin\Release\BarrelFunctions.xml
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BTmommy\bin\Release\LinearAlgebra.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BTmommy\bin\Release\ClassStringCalc.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BTmommy\bin\Release\ClassStringCalc.xml
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BTmommy\obj\x86\Release\BTmommy.csprojResolveAssemblyReference.cache
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BTmommy\obj\x86\Release\BTmommy.exe
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BTmommy\obj\x86\Release\BTmommy.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BTmommy\bin\Release\IMachine.cs
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BTmommy\bin\Release\xmlSerializer.pdb

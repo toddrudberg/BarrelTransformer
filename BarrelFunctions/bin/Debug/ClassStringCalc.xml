@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ClassStringCalc</name>
+    </assembly>
+    <members>
+        <member name="T:Electroimpact.StringCalc.IVariables">
+            <summary>
+            
+            To utilize string calc, simply call SimpleCalc(string myString)
+            where myString is an equation.  
+            
+            To get more fancy assign variables and use them
+            
+            To break the steps down, you can call SetOrderOfOperations2(string myString)
+            to see how the string will be sent to the parser.
+            
+            Then call parse(string returnfromSetOrderOfOperations2)
+            
+            To add operators, first you will need to modify code in:
+            
+            SetOrderOfOperation2
+            parse
+            ReturnThisLevel
+            WhoIsBigger
+            
+            Written for a veritety of purposes for Electroimpact by Todd W. Rudberg.
+            </summary>
+            
+        </member>
+        <member name="M:Electroimpact.StringCalc.cStringCalc.IsE(System.String)">
+            <summary>
+            Checks last character in a string for e.  However, if the 
+            characters prior to e are not numeric, this returns false.
+            The purpose of this function is to determin if the "e"
+            stands for exp or a power of ten function.
+            </summary>
+            <param name="Operand">string to be evaluated</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:Electroimpact.StringCalc.cStringCalc.cVariables._GetVariable(System.String)">
+            <summary>
+            Returns the double variable value
+            </summary>
+            <param name="Tag"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Electroimpact.StringCalc.cStringCalc.cVariables._GetVariableNote(System.String)">
+            <summary>
+            Returns the double variable value
+            </summary>
+            <param name="Tag"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Electroimpact.StringCalc.cStringCalc.cMacroVars.ClearMacroVars">
+            <summary>
+            Clears macro variables #100-#199. This will
+            be used when a new program is loaded or when
+            M2, M30, or M31 is run. Closer to the way
+            the A380 control program runs.
+            </summary>
+        </member>
+    </members>
+</doc>

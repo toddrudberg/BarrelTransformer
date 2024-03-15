@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BarrelFunctions</name>
+    </assembly>
+    <members>
+        <member name="M:Electroimpact.cPoint.#ctor(System.String,System.Boolean)">
+            <summary>
+            for barrel transform situations.  multi-6dof solutions.
+            </summary>
+            <param name="line_in"></param>
+            <param name="uses_vpos"></param>
+        </member>
+        <member name="M:Electroimpact.cPoint.#ctor(System.String)">
+            <summary>
+            For single rigid body solutions only.
+            </summary>
+            <param name="line_in"></param>
+        </member>
+        <member name="M:Electroimpact.cPoint.toArray">
+            <summary>
+            measured points to a 4x1 array
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Electroimpact.cPoint.toArrayNominal">
+            <summary>
+            nominal tooling points to a 4x1 array
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Electroimpact.cBarrelFunctions.#ctor(System.String)">
+            <summary>
+            Use this constructor when building from a setup string
+            </summary>
+            <param name="Setup"> a .csv sting where we have X,Y,Z,rX,rY,rZ,A_x,X,Y,Z,rX,rY,rZ.  rotaries are in degrees</param>
+        </member>
+        <member name="M:Electroimpact.cBarrelFunctions.#ctor(System.Int32[])">
+            <summary>
+            Use this constructor when building from cnc mamory and you only one a single rigid body transform.
+            </summary>
+            <param name="Setup"> an arrary where we have X,Y,Z,rX,rY,rZ,A_x,X,Y,Z,rX,rY,rZ.  rotaries are in degrees</param>
+        </member>
+        <member name="M:Electroimpact.cBarrelFunctions.#ctor(System.Int32[],System.Int32[],System.Int32)">
+            <summary>
+            Use this constructor when building from cnc mamory and you want a full barrel transform.
+            </summary>
+            <param name="Setup"> an arrary where we have X,Y,Z,rX,rY,rZ,A_x,X,Y,Z,rX,rY,rZ.  rotaries are in degrees</param>
+        </member>
+        <member name="M:Electroimpact.cBarrelFunctions.#ctor(System.Int32[],System.Int32[],System.Int32[],System.Int32)">
+            <summary>
+            Use this constructor when building from cnc mamory and you want a full barrel transform plus a tool to mandrel transform.
+            </summary>
+            <param name="Setup"> an arrary where we have X,Y,Z,rX,rY,rZ,A_x,X,Y,Z,rX,rY,rZ.  rotaries are in degrees</param>
+        </member>
+        <member name="M:Electroimpact.cBarrelFunctions.SetAirplaneToBarrel(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Paremeters are degrees
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="z"></param>
+            <param name="rX"></param>
+            <param name="rY"></param>
+            <param name="rZ"></param>
+        </member>
+        <member name="M:Electroimpact.cBarrelFunctions.AirplaneToBarrel(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            returns the coordinate in mandrel or "barrel" coordinates.
+            angular arguments are in degrees
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="z"></param>
+            <param name="rx">IN DEGREES</param>
+            <param name="ry">IN DEGREES</param>
+            <param name="rz">IN DEGREES</param>
+            <returns></returns>
+        </member>
+        <member name="M:Electroimpact.cBarrelFunctions.BarrelToFRC(System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Part Coordinates to FRC.  U and V in degrees.  V is optional, use only if you have the UV rotator.
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="z"></param>
+            <param name="u"></param>
+            <param name="v"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Electroimpact.cBarrelFunctions.BarrelToFRC(System.Double[0:,0:],System.Double,System.Double)">
+            <summary>
+            Part coortinate to FRC, upos and vpos in degrees.
+            </summary>
+            <param name="Point"></param>
+            <param name="upos"></param>
+            <param name="vpos"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Electroimpact.cBarrelFunctions.ConvertAtoPurerX(Electroimpact.LinearAlgebra.c6dof,System.Double)">
+            <summary>
+            returns a value in degrees representing the correct A
+            </summary>
+            <param name="point"></param>
+            <param name="distanceFromU0toA0"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

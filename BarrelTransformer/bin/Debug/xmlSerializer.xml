@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>xmlSerializer</name>
+    </assembly>
+    <members>
+        <member name="T:Electroimpact.MikesXmlSerializer">
+            <summary>
+            Serialize object into an XML file.  Most tedious taskes are handled for you.
+            </summary>
+        </member>
+        <member name="M:Electroimpact.MikesXmlSerializer.Save(System.Object)">
+            <summary>
+            Save an object as an XML file located at C:\ProgramData\Electroimpact\[ProgramName]\settings.xml
+            </summary>
+            <param name="ObjectToSerialize">object to be serialized</param>
+        </member>
+        <member name="M:Electroimpact.MikesXmlSerializer.Save(System.Object,System.String)">
+            <summary>
+            Save an object as an XML file
+            </summary>
+            <param name="ObjectToSerialize">object to be serialized</param>
+            <param name="SettingFileLocation">location (including filename) to save the XML</param>
+        </member>
+        <member name="M:Electroimpact.MikesXmlSerializer.Load``1">
+            <summary>
+            Load an object from an XML file located at C:\ProgramData\Electroimpact\[ProgramName]\settings.xml.
+            </summary>
+            <typeparam name="T">Type of the object that the XML file will be loaded into.  This handles the casting.</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Electroimpact.MikesXmlSerializer.Load``1(System.String)">
+            <summary>
+            Load an object from an XML file.
+            </summary>
+            <typeparam name="T">Type of the object that the XML file will be loaded into.  This handles the casting.</typeparam>
+            <param name="SettingFileLocation">Location of the XML file to load</param>
+            <returns></returns>
+        </member>
+        <member name="M:Electroimpact.MikesXmlSerializer.LoadFromXmlString``1(System.String)">
+            <summary>
+            Load an object from an XML formated string. The type of the object must match the object that was stored in the XML string
+            </summary>
+            <typeparam name="T">Type of the object that the XML file will be loaded into.  This handles the casting.</typeparam>
+            <param name="xml">String from which the object will be loaded</param>
+            <returns></returns>
+        </member>
+        <member name="M:Electroimpact.MikesXmlSerializer.objectToString(System.Object)">
+            <summary>
+            Convert an object to an XML string.  Use this if you want to manually manage saving, or only use the object in memory.
+            </summary>
+            <param name="ObjectToSerialize">object to be serialized</param>
+            <returns>XML string that contains the object information</returns>
+        </member>
+        <member name="M:Electroimpact.MikesXmlSerializer.generateDefaultFilename">
+            <summary>
+            Returns a string to a default file path for saving XML files. Form: C:\ProgramData\Electroimpact\[ProgramName]\settings.xml
+            </summary>
+            <returns>C:\ProgramData\Electroimpact\[ProgramName]\settings.xml</returns>
+        </member>
+        <member name="M:Electroimpact.MikesXmlSerializer.generateDefaultFilename(System.String,System.String)">
+            <summary>
+            Returns a string to a default file path for saving XML files. Form: C:\ProgramData\[companyFolderName]\[programFolderName]\settings.xml
+            </summary>
+            <param name="companyFolderName"></param>
+            <param name="programFolderName"></param>
+            <returns>C:\ProgramData\[companyFolderName]\[programFolderName]\settings.xml</returns>
+        </member>
+        <member name="M:Electroimpact.MikesXmlSerializer.generateDefaultFilename(System.String,System.String,System.String)">
+            <summary>
+            Returns a string to a default file path for saving XML files. Form: C:\ProgramData\[companyFolderName]\[programFolderName]\[FileName]
+            </summary>
+            <param name="companyFolderName"></param>
+            <param name="programFolderName"></param>
+            <param name="FileName"></param>
+            <returns>C:\ProgramData\[companyFolderName]\[programFolderName]\[FileName]</returns>
+        </member>
+        <member name="M:Electroimpact.MikesXmlSerializer.generateDefaultFilename(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Returns a string to a default file path for saving XML files. Form: C:\[ProgramData or ...\AppData]\[companyFolderName]\[programFolderName]\[FileName]
+            </summary>
+            <param name="companyFolderName"></param>
+            <param name="programFolderName"></param>
+            <param name="FileName"></param>
+            <param name="computerWide">If true the file will be in ProgramData, if false it will be in AppData (user specific)</param>
+            <returns>C:\[ProgramData or ...\AppData]\[companyFolderName]\[programFolderName]\[FileName]</returns>
+        </member>
+    </members>
+</doc>

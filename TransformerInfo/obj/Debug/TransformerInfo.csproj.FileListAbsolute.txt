@@ -1,0 +1,10 @@
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\TransformerInfo\bin\Debug\TransformerInfo.dll
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\TransformerInfo\bin\Debug\TransformerInfo.pdb
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\TransformerInfo\bin\Debug\Electroimpact.XmlSerializer.dll
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\TransformerInfo\bin\Debug\Electroimpact.XmlSerializer.pdb
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\TransformerInfo\bin\Debug\Electroimpact.XmlSerializer.xml
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\TransformerInfo\obj\Debug\TransformerInfo.csprojAssemblyReference.cache
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\TransformerInfo\obj\Debug\TransformerInfo.csproj.CoreCompileInputs.cache
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\TransformerInfo\obj\Debug\TransformerInfo.csproj.CopyComplete
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\TransformerInfo\obj\Debug\TransformerInfo.dll
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\TransformerInfo\obj\Debug\TransformerInfo.pdb

@@ -1,0 +1,72 @@
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelFunctions\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Debug\BarrelFunctions.dll
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Debug\BarrelFunctions.pdb
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Debug\OpenCNCDll.dll
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Debug\ClassStringCalc.dll
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Debug\LinearAlgebra.pdb
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Debug\LinearAlgebra.xml
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelFunctions\obj\Debug\BarrelFunctions.dll
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelFunctions\obj\Debug\BarrelFunctions.pdb
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Debug\IMachine.cs
+C:\Users\toddr.EI\Documents\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Debug\LinearAlgebra.dll
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Debug\IMachine.cs
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Debug\BarrelFunctions.dll
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Debug\BarrelFunctions.pdb
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Debug\LinearAlgebra.dll
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Debug\ClassStringCalc.dll
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Debug\LinearAlgebra.pdb
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Debug\LinearAlgebra.xml
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelFunctions\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelFunctions\obj\Debug\BarrelFunctions.dll
+C:\Users\toddr\Documents\dotNetSolutions\BarrelTransformer\BarrelFunctions\obj\Debug\BarrelFunctions.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelFunctions\bin\Debug\BarrelFunctions.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelFunctions\bin\Debug\BarrelFunctions.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelFunctions\bin\Debug\LinearAlgebra.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelFunctions\bin\Debug\ClassStringCalc.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelFunctions\bin\Debug\OpenCNCDll.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelFunctions\bin\Debug\LinearAlgebra.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelFunctions\bin\Debug\LinearAlgebra.xml
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelFunctions\bin\Debug\ClassStringCalc.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelFunctions\bin\Debug\ClassStringCalc.xml
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelFunctions\obj\Debug\BarrelFunctions.csprojResolveAssemblyReference.cache
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelFunctions\obj\Debug\BarrelFunctions.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelFunctions\obj\Debug\BarrelFunctions.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer - 3 - varg and neldermead\BarrelFunctions\bin\Debug\BarrelFunctions.XML
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Debug\BarrelFunctions.XML
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Debug\BarrelFunctions.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Debug\BarrelFunctions.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Debug\LinearAlgebra.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Debug\LinearAlgebra.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Debug\LinearAlgebra.xml
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\obj\Debug\BarrelFunctions.dll
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\obj\Debug\BarrelFunctions.pdb
+D:\Todd\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\obj\Debug\BarrelFunctions.csprojResolveAssemblyReference.cache
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Debug\BarrelFunctions.XML
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Debug\BarrelFunctions.dll
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Debug\BarrelFunctions.pdb
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Debug\LinearAlgebra.dll
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Debug\LinearAlgebra.pdb
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Debug\LinearAlgebra.xml
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\obj\Debug\BarrelFunctions.dll
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\obj\Debug\BarrelFunctions.pdb
+C:\Users\toddr.EI\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\obj\Debug\BarrelFunctions.csprojResolveAssemblyReference.cache
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Debug\BarrelFunctions.XML
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Debug\BarrelFunctions.dll
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Debug\BarrelFunctions.pdb
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Debug\LinearAlgebra.dll
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Debug\LinearAlgebra.pdb
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Debug\LinearAlgebra.xml
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\obj\Debug\BarrelFunctions.dll
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\obj\Debug\BarrelFunctions.pdb
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Debug\ClassStringCalc.dll
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Debug\csString.dll
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Debug\FileIO.dll
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Debug\SimplexSearch.dll
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Debug\ClassStringCalc.pdb
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Debug\ClassStringCalc.xml
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Debug\csString.pdb
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Debug\FileIO.pdb
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\bin\Debug\SimplexSearch.pdb
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\obj\Debug\BarrelFunctions.csprojAssemblyReference.cache
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\obj\Debug\BarrelFunctions.csproj.CoreCompileInputs.cache
+C:\Users\toddr\OneDrive\Projects\dotNetSolutions\BarrelTransformer\BarrelFunctions\obj\Debug\BarrelFunctions.csproj.CopyComplete

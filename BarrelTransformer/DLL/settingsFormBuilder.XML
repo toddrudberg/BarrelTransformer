@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>settingsFormBuilder</name>
+    </assembly>
+    <members>
+        <member name="M:Electroimpact.SettingsFormBuilder.frmSettings.createTree(System.Object@,System.Windows.Forms.TreeNode,Electroimpact.SettingsFormBuilder.cField)">
+            <summary>
+            Creates the tree (left hand side) and panel (right hand side) of setting information.  This is a recursive function.
+            </summary>
+            <param name="settingsInstance">The setting object to create the settings window from.  Usually a class containing multiple pieces of setting information.</param>
+            <param name="parentNode">Pass null for a new window</param>
+            <param name="nodename">The name to display for the node.  For a new window pass the name of the root node.</param>
+        </member>
+        <member name="F:Electroimpact.SettingsFormBuilder.frmSettings.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Electroimpact.SettingsFormBuilder.frmSettings.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Electroimpact.SettingsFormBuilder.frmSettings.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:Electroimpact.SettingsFormBuilder.settingsFormBuilder.#ctor(System.String,System.Object)">
+            <summary>
+            Create a settings dialog which includes file saving abilities.
+            </summary>
+            <param name="fileLocation">Location of the save file</param>
+            <param name="SettingsObject">Object to generate the settings dialog from</param>
+        </member>
+        <member name="M:Electroimpact.SettingsFormBuilder.settingsFormBuilder.#ctor(System.Object)">
+            <summary>
+            Create a settings dialog.  No file saving is provided.  To use file saving use the overload that requires a filename.
+            </summary>
+            <param name="SettingsObject">Object to generate the settings dialog from</param>
+        </member>
+        <member name="T:settingsFormBuilder.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:settingsFormBuilder.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:settingsFormBuilder.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+    </members>
+</doc>

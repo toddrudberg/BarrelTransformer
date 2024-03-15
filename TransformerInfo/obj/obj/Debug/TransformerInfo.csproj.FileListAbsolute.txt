@@ -1,0 +1,5 @@
+C:\Users\joshuah\Desktop\TI\bin\Debug\TransformerInfo.dll
+C:\Users\joshuah\Desktop\TI\bin\Debug\TransformerInfo.pdb
+C:\Users\joshuah\Desktop\TI\bin\Debug\xmlSerializer.dll
+C:\Users\joshuah\Desktop\TI\obj\Debug\TransformerInfo.dll
+C:\Users\joshuah\Desktop\TI\obj\Debug\TransformerInfo.pdb

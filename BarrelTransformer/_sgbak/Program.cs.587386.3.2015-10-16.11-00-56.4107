@@ -1,0 +1,45 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
+
+namespace Electroimpact.Transformer
+{
+  public static class Program
+  {
+    /// <summary>
+    /// The main entry point for the application.
+    /// </summary>
+    [STAThread]
+    static void Main()
+    {
+      Application.EnableVisualStyles();
+      Application.SetCompatibleTextRenderingDefault(false);
+      Application.Run(new frmBarrelTransformer());
+    }
+
+    public class cBTransformer
+    {
+
+      public double[] SolveTransform(string IPaddress, int which_transform, out List<double> errorList)
+      {
+
+
+        frmBarrelTransformer TformUI = new frmBarrelTransformer(false);
+
+        //calculate the transform
+        TformUI.InterfaceTransform();
+
+        errorList = TformUI.errorList;
+
+        //send transform to cnc
+        TformUI.SendTfrm2CNC_M38S1(IPaddress, which_transform);
+
+        //get Euler XYZABC values in input units and degrees
+        return TformUI.GetEuler();
+
+      }
+
+    }
+  }
+}
